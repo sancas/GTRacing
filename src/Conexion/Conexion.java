@@ -5,8 +5,12 @@
  */
 
 package Conexion;
+
 import IntercambioVariable.InterVariable;
-import java.io.*;
+import com.google.gson.Gson;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,9 +26,34 @@ public class Conexion {
     private PreparedStatement pStatemnt;
     private ResultSet rs;
     
+    private String getConnectionString() {
+        String sConnectionString = null;
+        String host = null, dbname = null;
+        int port = 0;
+        Gson gson = new Gson();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("conf.json"));
+            Result result = gson.fromJson(br, Result.class);
+            if (result != null)
+            {
+                Database db = result.getDatabase();
+                host = db.getHost();
+                port = db.getPort();
+                dbname = db.getDbname();
+            }
+            sConnectionString = "jdbc:postgresql://"
+                    + host + ":"
+                    + port + "/"
+                    + dbname;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sConnectionString;
+    }
+    
     public void EstablecerConn(){
         try {
-            String cadena = "jdbc:postgresql://localhost:5432/GTRacing";
+            String cadena = getConnectionString();
             String user = "postgres";
             String pwd = "fairytail";
                 
