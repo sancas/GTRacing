@@ -50,7 +50,6 @@ public class Ventas extends javax.swing.JInternalFrame {
 
     private void fillData() {
         try {
-            db.EstablecerConn();
             ResultSet repuestos = db.getRepuestos();
             while (repuestos.next()) {
                 if (repuestos.getBoolean("repuestoisactive")) {
@@ -252,7 +251,7 @@ public class Ventas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLblTotal))
                 .addContainerGap())
@@ -296,7 +295,6 @@ public class Ventas extends javax.swing.JInternalFrame {
     private void jCmbProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCmbProductoActionPerformed
         // TODO add your handling code here:
         try {
-            db.EstablecerConn();
             Repuesto item = (Repuesto) jCmbProducto.getSelectedItem();
             ResultSet rs = db.getRepuestos(item.getId());
             if (rs.next()) {
@@ -310,6 +308,8 @@ public class Ventas extends javax.swing.JInternalFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Ventas.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.CerrarConn();
         }
     }//GEN-LAST:event_jCmbProductoActionPerformed
 
