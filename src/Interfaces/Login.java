@@ -73,8 +73,10 @@ public class Login extends javax.swing.JFrame {
         });
 
         txtUsuario.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtUsuario.setText("leon04");
 
         txtPwd.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtPwd.setText("D@nB@$c04");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

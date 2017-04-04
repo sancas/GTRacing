@@ -102,4 +102,29 @@ public class Conexion {
             return null;
         }
     }
+    
+    public ResultSet getRepuestos() {
+        try {
+            EstablecerConn();
+            pStatemnt = con.prepareStatement("SELECT idrepuesto, namerepuesto, repuestoisactive FROM repuestos");
+            rs = pStatemnt.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            return null;
+        }
+    }
+    
+    public ResultSet getRepuestos(int id) {
+        try {
+            EstablecerConn();
+            pStatemnt = con.prepareStatement("SELECT cantidad, precioventa FROM existenciarepuestos WHERE idrepuesto = ?");
+            pStatemnt.setInt(1, id);
+            rs = pStatemnt.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            return null;
+        }
+    }
 }

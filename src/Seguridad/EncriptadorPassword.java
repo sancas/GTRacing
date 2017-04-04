@@ -108,7 +108,7 @@ public class EncriptadorPassword {
 
             // Encrypt
             byte[] enc = ecipher.doFinal(utf8);
-
+            
             // Encode bytes to base64 to get a string
             return new sun.misc.BASE64Encoder().encode(enc);
 

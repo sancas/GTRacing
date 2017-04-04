@@ -6,7 +6,7 @@
 
 package Interfaces;
 import Conexion.Conexion;
-import Inventario.AddRepuestos;
+import Inventario.*;
 import java.sql.*;
 import java.text.DateFormat;
 import java.util.Date;
@@ -67,6 +67,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jmiOpen = new javax.swing.JMenuItem();
         jmnAutos = new javax.swing.JMenu();
         jmnVentas = new javax.swing.JMenu();
+        jmniOpenSells = new javax.swing.JMenuItem();
         jmnGraficas = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -145,6 +146,15 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jMenuBar1.add(jmnAutos);
 
         jmnVentas.setText("Ventas");
+
+        jmniOpenSells.setText("jMenuItem1");
+        jmniOpenSells.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmniOpenSellsActionPerformed(evt);
+            }
+        });
+        jmnVentas.add(jmniOpenSells);
+
         jMenuBar1.add(jmnVentas);
 
         jmnGraficas.setText("Graficos");
@@ -175,6 +185,13 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jDesktopPane1.add(ad);
         jDesktopPane1.moveToFront(ad);
     }//GEN-LAST:event_jmiOpenActionPerformed
+
+    private void jmniOpenSellsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmniOpenSellsActionPerformed
+        // TODO add your handling code here:
+        Ventas ventas = new Ventas();
+        jDesktopPane1.add(ventas);
+        jDesktopPane1.moveToFront(ventas);
+    }//GEN-LAST:event_jmniOpenSellsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,5 +235,6 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jmnRepuestos;
     private javax.swing.JMenu jmnUsuarios;
     private javax.swing.JMenu jmnVentas;
+    private javax.swing.JMenuItem jmniOpenSells;
     // End of variables declaration//GEN-END:variables
 }
