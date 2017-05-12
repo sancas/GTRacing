@@ -187,4 +187,3 @@ insert into tareas(nametarea, descripcion) values ('RepuestosDelete','Puede elim
 insert into tareas(nametarea, descripcion) values ('AutosAdd','Puede agregar autos');
 insert into tareas(nametarea, descripcion) values ('AutosUpdate','Puede editar autos');
 insert into tareas(nametarea, descripcion) values ('AutosDelete','Puede eliminar autos');
-

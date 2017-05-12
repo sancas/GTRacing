@@ -11,18 +11,25 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import local.DAO.Facturas_DAO;
 import local.DAO.Repuestos_DAO;
 import local.LC.Repuestos;
+import local.Pool_Variable.Variables;
 
 /**
  *
  * @author sanch
  */
 public class Ventas extends javax.swing.JInternalFrame {
+    
+    //Variables globales
+    Facturas_DAO facturaDAO = new Facturas_DAO();
 
     /**
      * Creates new form Ventas
@@ -108,6 +115,7 @@ public class Ventas extends javax.swing.JInternalFrame {
         jLblSliderCount = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLblTotal = new javax.swing.JLabel();
+        jBtnFactura = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -211,6 +219,13 @@ public class Ventas extends javax.swing.JInternalFrame {
         jLblTotal.setText("$0.00");
         jLblTotal.setToolTipText("");
 
+        jBtnFactura.setText("Facturar");
+        jBtnFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnFacturaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -220,7 +235,8 @@ public class Ventas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBtnFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLblTotal))
@@ -274,11 +290,13 @@ public class Ventas extends javax.swing.JInternalFrame {
                     .addComponent(jLblSubTotal)
                     .addComponent(jBtnAgregar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLblTotal))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel6)
+                        .addComponent(jLblTotal))
+                    .addComponent(jBtnFactura))
                 .addContainerGap())
         );
 
@@ -307,7 +325,7 @@ public class Ventas extends javax.swing.JInternalFrame {
         Double dSubTotal = Double.parseDouble(jLblSubTotal.getText().replace("$", ""));
         Repuestos item = (Repuestos) jCmbProducto.getSelectedItem();
         model.addRow(new Object[]{
-            item.getDescription(),
+            item,
             jSliderCantidad.getValue(),
             round(Double.parseDouble(jLblPrecioUnitario.getText().replace("$", "")), 2),
             round(dSubTotal, 2)
@@ -354,9 +372,46 @@ public class Ventas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTableListadoKeyPressed
 
+    private void jBtnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFacturaActionPerformed
+        try {
+            // TODO add your handling code here:
+            DefaultTableModel model = (DefaultTableModel) jTableListado.getModel();
+            int cantidad;
+            double dTotal = 0, precioUnitario;
+            boolean bandera = false;
+            int factura = facturaDAO.addFactura(Variables.getIdUsuario(), jTxtCliente.getText(), Double.parseDouble(jLblTotal.getText().replace("$", "")));
+            if (factura > 0)
+            {
+                for (int x = 0; x < jTableListado.getRowCount(); x++)
+                {
+                    Repuestos item = (Repuestos)model.getValueAt(x, 0);
+                    cantidad = (int)model.getValueAt(x, 1);
+                    precioUnitario = (double)model.getValueAt(x, 2);
+                    dTotal += (double)model.getValueAt(x, 3);
+                    factura=facturaDAO.addDetalleFactura(facturaDAO.getLastFacturaID(), item.getId(), cantidad, precioUnitario, dTotal);
+                    if (factura > 0)
+                        bandera = true;
+                    else
+                        bandera = false;
+                }
+                if (bandera)
+                {
+                    JOptionPane.showMessageDialog(null, "Se facturo correctamente");
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "No se pudo facturar");
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(Ventas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBtnFacturaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAgregar;
+    private javax.swing.JButton jBtnFactura;
     private javax.swing.JComboBox<Repuestos> jCmbProducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

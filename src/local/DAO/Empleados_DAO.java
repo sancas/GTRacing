@@ -204,17 +204,8 @@ public class Empleados_DAO {
                 jcbxModel.addElement(new Empleados(rs.getInt(1), rs.getString(2)));
             }
         }
-        catch(Exception ex){
-        }
-        finally{
-            try{
-                myConn.CerrarConn();
-                rs.close();
-                pStatement.close();
-            }
-            catch(Exception e){
-                
-            }
+        catch (SQLException ex) {
+            Logger.getLogger(Empleados_DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
