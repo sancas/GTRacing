@@ -25,10 +25,8 @@ public class Repuestos {
     public ResultSet getRepuestosIndex(){
         try {
             myConn.EstablecerConn();
-            myPstat = myConn.con.prepareStatement("select * from repuestos");
+            myPstat = myConn.con.prepareStatement("select * from repuestos WHERE respuestoisactive = 1");
             myRs = myPstat.executeQuery();
-            
-            
             return myRs;
         } catch (SQLException ex) {
             Logger.getLogger(Repuestos.class.getName()).log(Level.SEVERE, null, ex);

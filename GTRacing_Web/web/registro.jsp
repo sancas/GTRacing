@@ -56,7 +56,7 @@
                         <button type="submit" class="btn btn-default">Buscar</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="login.jsp">Loging</a></li>
+                        <li><a href="login.jsp">Login</a></li>
                         <li class="active"><a href="#">Registrate</a><span class="sr-only">(current)</span></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
