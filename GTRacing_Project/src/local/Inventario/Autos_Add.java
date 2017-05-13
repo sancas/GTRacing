@@ -122,16 +122,18 @@ public class Autos_Add extends javax.swing.JInternalFrame {
         try {
             if (rs.next()) {
                 is = rs.getBinaryStream(1);
+                if (is != null)
+                {
+                    BufferedImage bf = ImageIO.read(is);
+                    foto = new ImageIcon(bf);
 
-                BufferedImage bf = ImageIO.read(is);
-                foto = new ImageIcon(bf);
+                    Image img = foto.getImage();
+                    Image newImg = img.getScaledInstance(jlblFoto.getHeight(), jlblFoto.getHeight(), Image.SCALE_DEFAULT);
 
-                Image img = foto.getImage();
-                Image newImg = img.getScaledInstance(jlblFoto.getWidth(), jlblFoto.getHeight(), Image.SCALE_DEFAULT);
+                    ImageIcon newIcon = new ImageIcon(newImg);
 
-                ImageIcon newIcon = new ImageIcon(newImg);
-
-                jlblFoto.setIcon(newIcon);
+                    jlblFoto.setIcon(newIcon);
+                }
             }
 
             rs.close();
@@ -141,12 +143,14 @@ public class Autos_Add extends javax.swing.JInternalFrame {
         }
     }
     
-    private void Limpiar(){
+    private void limpieza() {
         jtfAnyo.setText("");
         jtfModelo.setText("");
         jcbxMarca.setSelectedIndex(0);
         jlblFoto.setIcon(null);
-        
+    }
+    private void Limpiar(){
+        limpieza();
         for (int i = 0; i < jtblAutos.getRowCount(); i++) {
             modeloAutos.removeRow(i);
             i-=1;
@@ -215,7 +219,7 @@ public class Autos_Add extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Agregar Autos");
         setMinimumSize(new java.awt.Dimension(400, 550));
-        setPreferredSize(new java.awt.Dimension(500, 0));
+        setPreferredSize(new java.awt.Dimension(500, 650));
 
         jlblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -265,18 +269,26 @@ public class Autos_Add extends javax.swing.JInternalFrame {
         jPanelAcciones.setBackground(new java.awt.Color(80, 81, 79));
 
         jrbtnAdd.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnAdd);
         jrbtnAdd.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnAdd.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnAdd.setText("Agregar");
         jrbtnAdd.setEnabled(false);
+        jrbtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbtnAddActionPerformed(evt);
+            }
+        });
 
         jrbtnUpdate.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnUpdate);
         jrbtnUpdate.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnUpdate.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnUpdate.setText("Editar");
         jrbtnUpdate.setEnabled(false);
 
         jrbtnDelete.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnDelete);
         jrbtnDelete.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnDelete.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnDelete.setText("Eliminar");
@@ -338,7 +350,7 @@ public class Autos_Add extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -358,8 +370,7 @@ public class Autos_Add extends javax.swing.JInternalFrame {
                     .addComponent(jlblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbtnAceptar)
-                .addContainerGap())
+                .addComponent(jbtnAceptar))
         );
 
         jLabel4.getAccessibleContext().setAccessibleName("Año");
@@ -379,7 +390,7 @@ public class Autos_Add extends javax.swing.JInternalFrame {
                 bite = (int) j.getSelectedFile().length();
 
                 try {
-                    Image icono = ImageIO.read(j.getSelectedFile()).getScaledInstance(jlblFoto.getWidth(), jlblFoto.getHeight(), Image.SCALE_DEFAULT);
+                    Image icono = ImageIO.read(j.getSelectedFile()).getScaledInstance(jlblFoto.getHeight(), jlblFoto.getHeight(), Image.SCALE_DEFAULT);
                     jlblFoto.setIcon(new ImageIcon(icono));
                     jlblFoto.updateUI();
                     if (jrbtnUpdate.isSelected()) {
@@ -464,6 +475,11 @@ public class Autos_Add extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jtblAutosMouseClicked
+
+    private void jrbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnAddActionPerformed
+        // TODO add your handling code here:
+        limpieza();
+    }//GEN-LAST:event_jrbtnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

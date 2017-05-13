@@ -188,6 +188,7 @@ public class Empleados_DAO {
             myRs = myPstate.executeQuery();
             jcbxModel = new DefaultComboBoxModel();
             jcbx.setModel(jcbxModel);
+            jcbxModel.addElement("Seleccionar...");
             while(myRs.next()){
                 jcbxModel.addElement(new Empleados(myRs.getInt(1), myRs.getString(2)));
             }

@@ -234,6 +234,8 @@ INSERT INTO tareas(nametarea, descripcion) VALUES('RepuestosDelete', 'Puede elim
 INSERT INTO tareas(nametarea, descripcion) VALUES('AutosAdd', 'Puede agregar autos');
 INSERT INTO tareas(nametarea, descripcion) VALUES('AutosUpdate', 'Puede editar autos');
 INSERT INTO tareas(nametarea, descripcion) VALUES('AutosDelete', 'Puede eliminar autos');
+INSERT INTO tareas(nametarea, descripcion) VALUES('Ventas', 'Acceso a ventas');
+INSERT INTO tareas(nametarea, descripcion) VALUES('Estadisticas', 'Acceso a Estadisticas');
 -- - RELACION ROL - TAREAS-- -
 INSERT INTO Tareas_Roles(idrol, idtarea) VLAUES(1, 1);
 INSERT INTO Tareas_Roles(idrol, idtarea) VLAUES(1, 2);

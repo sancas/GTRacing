@@ -36,6 +36,8 @@ public class Roles extends javax.swing.JInternalFrame {
         initComponents();
         setVisible(true);
         
+        //cargando acciones por roles
+        accionRol();
         
         //Ocultar columnas
         jtblRoles.getColumnModel().getColumn(0).setMaxWidth(0);
@@ -50,8 +52,7 @@ public class Roles extends javax.swing.JInternalFrame {
     
     //metodo para establecer la cabecera de la tabla
     private String[] getColums() {
-        String[] colums = new String[]{"Id", "Rol", "Descricion"};
-
+        String[] colums = new String[]{"Id", "Rol", "Descripcion"};
         return colums;
     }
 
@@ -75,20 +76,47 @@ public class Roles extends javax.swing.JInternalFrame {
         }
     }
     
+    //metodo para verificar los permisos para el formulario cargos
+    private void accionRol(){
+        ResultSet rs = rolDao.listaTareas();
+        int acciones;
+        
+        try {
+            while(rs.next()){
+                acciones = rs.getInt(1);
+                switch(acciones){
+                    case 7:
+                        jrbtnAdd.setEnabled(true);
+                        break;
+                    case 8:
+                        jrbtnUpdate.setEnabled(true);
+                        break;
+                    case 9:
+                        jrbtnDelete.setEnabled(true);
+                        break;
+                }
+                if(acciones > 9)
+                    break;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Roles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
     //metodo para verifica si se ha seleccionado un checkbox de accion
     private boolean giveAction(){
         boolean isAction = false;
         JCheckBox[] misCheckBox = new JCheckBox[]{jchkCargosAdd, jchkCargoEdit, jchkCargosDel, jchkEmpleadosAdd, jchkEmpleadosEdit,
                 jchkEmpleadosDel, jchkRolesAdd, jchkRolesEdit, jchkRolesDel, jchkUsuariosAdd, jchkUsuariosEdit, jchkUsuariosDel, 
                 jchkProveedorAdd, jchkProveedorEdit, jchkProveedorDel, jchkRepuestosAdd, jchkRepuestosEdit, jchkRepuestosDel,
-                jchkAutosAdd, jchkAutosEdit, jchkAutosDel};
+                jchkAutosAdd, jchkAutosEdit, jchkAutosDel, jchkVentas, jchkEstadisticas};
         
         for (JCheckBox miCheckBox : misCheckBox) {
             if (miCheckBox.isSelected()) {
                 isAction = true;
             }
         }
-        
         return isAction;
     }
     
@@ -99,7 +127,7 @@ public class Roles extends javax.swing.JInternalFrame {
         JCheckBox[] misCheckBox = new JCheckBox[]{jchkCargosAdd, jchkCargoEdit, jchkCargosDel, jchkEmpleadosAdd, jchkEmpleadosEdit,
                 jchkEmpleadosDel, jchkRolesAdd, jchkRolesEdit, jchkRolesDel, jchkUsuariosAdd, jchkUsuariosEdit, jchkUsuariosDel, 
                 jchkProveedorAdd, jchkProveedorEdit, jchkProveedorDel, jchkRepuestosAdd, jchkRepuestosEdit, jchkRepuestosDel,
-                jchkAutosAdd, jchkAutosEdit, jchkAutosDel};
+                jchkAutosAdd, jchkAutosEdit, jchkAutosDel, jchkVentas, jchkEstadisticas};
         
         for (JCheckBox miCheckBox : misCheckBox) {
             if (miCheckBox.isSelected()) {
@@ -132,7 +160,7 @@ public class Roles extends javax.swing.JInternalFrame {
         JCheckBox[] misCheckBox = new JCheckBox[]{jchkCargosAdd, jchkCargoEdit, jchkCargosDel, jchkEmpleadosAdd, jchkEmpleadosEdit,
                 jchkEmpleadosDel, jchkRolesAdd, jchkRolesEdit, jchkRolesDel, jchkUsuariosAdd, jchkUsuariosEdit, jchkUsuariosDel, 
                 jchkProveedorAdd, jchkProveedorEdit, jchkProveedorDel, jchkRepuestosAdd, jchkRepuestosEdit, jchkRepuestosDel,
-                jchkAutosAdd, jchkAutosEdit, jchkAutosDel};
+                jchkAutosAdd, jchkAutosEdit, jchkAutosDel, jchkVentas, jchkEstadisticas};
         
         ResultSet rs = rolDao.getTareasRol(idRoles);
         
@@ -183,7 +211,6 @@ public class Roles extends javax.swing.JInternalFrame {
                     }
                 }
             }
-            
             rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(Roles.class.getName()).log(Level.SEVERE, null, ex);
@@ -192,50 +219,18 @@ public class Roles extends javax.swing.JInternalFrame {
     
     private int deleteTareasRol(){
         int isDelete = rolDao.delTareas(idRoles);
-        
         return isDelete;
     }
     
-    //metodo para verificar los permisos para el formulario cargos
-    private void accionRol(){
-        ResultSet rs = rolDao.listaTareas();
-        int acciones;
-        
-        try {
-            while(rs.next()){
-                acciones = rs.getInt(1);
-                switch(acciones){
-                    case 7:
-                        jrbtnAdd.setEnabled(true);
-                        break;
-                        
-                    case 8:
-                        jrbtnUpdate.setEnabled(true);
-                        break;
-                        
-                    case 9:
-                        jrbtnDelete.setEnabled(true);
-                        break;
-                }
-                
-                if(acciones > 9)
-                    break;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Roles.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-    
     //metodo para limpiar los elementos del formulario
-    private void limpieza() {
+    private void limpiar() {
         jtfDescripcion.setText("");
         jtfRol.setText("");
         JCheckBox[] misCheckBox = new JCheckBox[]{jchkCargosAdd, jchkCargoEdit, jchkCargosDel, jchkEmpleadosAdd, jchkEmpleadosEdit,
                 jchkEmpleadosDel, jchkRolesAdd, jchkRolesEdit, jchkRolesDel, jchkUsuariosAdd, jchkUsuariosEdit, jchkUsuariosDel, 
                 jchkProveedorAdd, jchkProveedorEdit, jchkProveedorDel, jchkRepuestosAdd, jchkRepuestosEdit, jchkRepuestosDel,
                 jchkAutosAdd, jchkAutosEdit, jchkAutosDel, jchkCargos, jchkEmpleados, jchkRoles, jchkUsuarios, jchkProveedor, 
-                jchkRepuestos, jchkAutos};
+                jchkRepuestos, jchkAutos, jchkVentas, jchkEstadisticas};
         
         for (int i = 0; i < misCheckBox.length; i++) {
             misCheckBox[i].setSelected(false);
@@ -243,7 +238,11 @@ public class Roles extends javax.swing.JInternalFrame {
                 misCheckBox[i].setEnabled(false);
             }
         }
-        
+    }
+    
+    //metodo para limpiar el jtable
+    private void limpieza() {
+        limpiar();        
         for (int i = 0; i < jtblRoles.getRowCount(); i++) {
             viewRoles.removeRow(i);
             i -= 1;
@@ -497,18 +496,26 @@ public class Roles extends javax.swing.JInternalFrame {
         jPanelAcciones.setBackground(new java.awt.Color(80, 81, 79));
 
         jrbtnAdd.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnAdd);
         jrbtnAdd.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnAdd.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnAdd.setText("Agregar");
         jrbtnAdd.setEnabled(false);
+        jrbtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbtnAddActionPerformed(evt);
+            }
+        });
 
         jrbtnUpdate.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnUpdate);
         jrbtnUpdate.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnUpdate.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnUpdate.setText("Editar");
         jrbtnUpdate.setEnabled(false);
 
         jrbtnDelete.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnDelete);
         jrbtnDelete.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnDelete.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnDelete.setText("Eliminar");
@@ -547,9 +554,6 @@ public class Roles extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbtnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,7 +562,7 @@ public class Roles extends javax.swing.JInternalFrame {
                         .addGap(10, 10, 10))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(0, 0, Short.MAX_VALUE))
@@ -567,46 +571,51 @@ public class Roles extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jtfBuscar)))
                         .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jchkCargos)
-                            .addComponent(jchkCargosAdd)
-                            .addComponent(jchkCargoEdit)
-                            .addComponent(jchkCargosDel)
-                            .addComponent(jchkAutosAdd)
-                            .addComponent(jchkAutos)
-                            .addComponent(jchkAutosEdit)
-                            .addComponent(jchkAutosDel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jchkEmpleados)
-                            .addComponent(jchkEmpleadosAdd)
-                            .addComponent(jchkEmpleadosEdit)
-                            .addComponent(jchkEmpleadosDel)
-                            .addComponent(jchkRepuestos)
-                            .addComponent(jchkRepuestosAdd)
-                            .addComponent(jchkRepuestosEdit)
-                            .addComponent(jchkRepuestosDel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jchkProveedorEdit)
-                            .addComponent(jchkProveedorDel)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jchkProveedorAdd)
-                                    .addComponent(jchkProveedor)
+                                    .addComponent(jchkCargos)
+                                    .addComponent(jchkCargosAdd)
+                                    .addComponent(jchkCargoEdit)
+                                    .addComponent(jchkCargosDel)
+                                    .addComponent(jchkAutosAdd)
+                                    .addComponent(jchkAutos)
+                                    .addComponent(jchkAutosEdit)
+                                    .addComponent(jchkAutosDel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jchkEmpleados)
+                                    .addComponent(jchkEmpleadosAdd)
+                                    .addComponent(jchkEmpleadosEdit)
+                                    .addComponent(jchkEmpleadosDel)
+                                    .addComponent(jchkRepuestos)
+                                    .addComponent(jchkRepuestosAdd)
+                                    .addComponent(jchkRepuestosEdit)
+                                    .addComponent(jchkRepuestosDel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jchkRoles)
                                     .addComponent(jchkRolesAdd)
                                     .addComponent(jchkRolesEdit)
-                                    .addComponent(jchkRolesDel))
+                                    .addComponent(jchkRolesDel)
+                                    .addComponent(jchkProveedorEdit)
+                                    .addComponent(jchkProveedorDel)
+                                    .addComponent(jchkProveedorAdd)
+                                    .addComponent(jchkProveedor))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jchkUsuarios)
-                                    .addComponent(jchkUsuariosAdd)
-                                    .addComponent(jchkUsuariosEdit)
-                                    .addComponent(jchkUsuariosDel)
-                                    .addComponent(jchkVentas)
-                                    .addComponent(jchkEstadisticas))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jchkUsuarios)
+                                            .addComponent(jchkUsuariosAdd)
+                                            .addComponent(jchkUsuariosEdit)
+                                            .addComponent(jchkUsuariosDel))
+                                        .addGap(18, 18, 18))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jchkVentas)
+                                        .addComponent(jchkEstadisticas))))
+                            .addComponent(jbtnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -618,7 +627,7 @@ public class Roles extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jtfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -629,59 +638,31 @@ public class Roles extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jchkRoles)
+                            .addGap(8, 8, 8)
+                            .addComponent(jchkRolesAdd)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jchkRolesEdit)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jchkRolesDel))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jchkCargos)
+                            .addGap(8, 8, 8)
+                            .addComponent(jchkCargosAdd)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jchkCargoEdit)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jchkCargosDel)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jchkEmpleados)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jchkEmpleadosAdd)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jchkEmpleadosEdit)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jchkEmpleadosDel))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jchkRoles)
-                                    .addGap(8, 8, 8)
-                                    .addComponent(jchkRolesAdd)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jchkRolesEdit)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jchkRolesDel)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jchkCargos)
-                                .addGap(8, 8, 8)
-                                .addComponent(jchkCargosAdd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jchkCargoEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jchkCargosDel)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jchkRepuestos)
-                                .addGap(8, 8, 8)
-                                .addComponent(jchkRepuestosAdd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jchkRepuestosEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jchkRepuestosDel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jchkAutos)
-                                .addGap(8, 8, 8)
-                                .addComponent(jchkAutosAdd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jchkAutosEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jchkAutosDel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jchkProveedor)
-                                .addGap(8, 8, 8)
-                                .addComponent(jchkProveedorAdd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jchkProveedorEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jchkProveedorDel))))
+                        .addComponent(jchkEmpleados)
+                        .addGap(8, 8, 8)
+                        .addComponent(jchkEmpleadosAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jchkEmpleadosEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jchkEmpleadosDel))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jchkUsuarios)
                         .addGap(8, 8, 8)
@@ -689,11 +670,37 @@ public class Roles extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jchkUsuariosEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkUsuariosDel)
-                        .addGap(18, 18, 18)
+                        .addComponent(jchkUsuariosDel)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jchkVentas)
                         .addGap(8, 8, 8)
-                        .addComponent(jchkEstadisticas)))
+                        .addComponent(jchkEstadisticas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jchkAutos)
+                        .addGap(8, 8, 8)
+                        .addComponent(jchkAutosAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jchkAutosEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jchkAutosDel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jchkRepuestos)
+                        .addGap(8, 8, 8)
+                        .addComponent(jchkRepuestosAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jchkRepuestosEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jchkRepuestosDel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jchkProveedor)
+                        .addGap(8, 8, 8)
+                        .addComponent(jchkProveedorAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jchkProveedorEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jchkProveedorDel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbtnAceptar)
                 .addContainerGap())
@@ -846,6 +853,11 @@ public class Roles extends javax.swing.JInternalFrame {
             loadCheck();
         }
     }//GEN-LAST:event_jtblRolesMouseClicked
+
+    private void jrbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnAddActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+    }//GEN-LAST:event_jrbtnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -94,7 +94,7 @@ public class Repuestos_DAO {
         idusuario = local.Pool_Variable.Variables.getIdUsuario();
         try{
             myConn.EstablecerConn();
-            myPstate = myConn.con.prepareStatement("update repuestos set namerepuesto = ?, respuestoisactive = ?, descripcion = ?, foto = ? iduseradd = ? where idrepuesto = ?");
+            myPstate = myConn.con.prepareStatement("update repuestos set namerepuesto = ?, respuestoisactive = ?, descripcion = ?, foto = ?, iduseradd = ? where idrepuesto = ?");
             myPstate.setString(1, resp);
             myPstate.setInt(2, estado);
             myPstate.setString(3, descrip);

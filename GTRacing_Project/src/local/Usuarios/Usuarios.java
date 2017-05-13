@@ -127,13 +127,16 @@ public class Usuarios extends javax.swing.JInternalFrame {
         
     }
     
-    private void limpieza(){
+    private void limpiar() {
         jtfUsuario.setText("");
         jtfPass1.setText("");
         jtfPass2.setText("");
         jcbxEmpleado.setSelectedIndex(0);
         jcbxRol.setSelectedIndex(0);
-        
+    }
+    
+    private void limpieza() {
+        limpiar();        
         for (int i = 0; i < jtbUsuarios.getRowCount(); i++) {
             viewUser.removeRow(i);
             i -= 1;
@@ -176,6 +179,8 @@ public class Usuarios extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Usuarios");
         setToolTipText("");
+        setMinimumSize(new java.awt.Dimension(500, 400));
+        setPreferredSize(new java.awt.Dimension(600, 500));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel2.setText("Buscar:");
@@ -209,11 +214,13 @@ public class Usuarios extends javax.swing.JInternalFrame {
         jLabel6.setText("Empleado:");
 
         jcbxEmpleado.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jcbxEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar..." }));
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel7.setText("Rol");
 
         jcbxRol.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jcbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar..." }));
 
         jbtnAceptar.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jbtnAceptar.setText("Aceptar");
@@ -226,18 +233,26 @@ public class Usuarios extends javax.swing.JInternalFrame {
         jPanelAcciones.setBackground(new java.awt.Color(80, 81, 79));
 
         jrbtnAdd.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnAdd);
         jrbtnAdd.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnAdd.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnAdd.setText("Agregar");
         jrbtnAdd.setEnabled(false);
+        jrbtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbtnAddActionPerformed(evt);
+            }
+        });
 
         jrbtnUpdate.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnUpdate);
         jrbtnUpdate.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnUpdate.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnUpdate.setText("Editar");
         jrbtnUpdate.setEnabled(false);
 
         jrbtnDelete.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnDelete);
         jrbtnDelete.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnDelete.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnDelete.setText("Eliminar");
@@ -438,6 +453,11 @@ public class Usuarios extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jtbUsuariosMouseClicked
+
+    private void jrbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnAddActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+    }//GEN-LAST:event_jrbtnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

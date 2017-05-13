@@ -52,6 +52,7 @@ public class Roles_DAO {
             myRs = myPstate.executeQuery();
             jcbxModel = new DefaultComboBoxModel();
             jcbx.setModel(jcbxModel);
+            jcbxModel.addElement("Seleccionar...");
             while(myRs.next()){
                 jcbxModel.addElement(new Roles(myRs.getInt(1), myRs.getString(2)));
             }

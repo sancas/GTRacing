@@ -118,13 +118,16 @@ public class Repuesto_Existencia extends javax.swing.JInternalFrame {
         });
     }
     
-    private void Limpiar(){
+    private void Limpieza() {
         jtfCantidad.setText("");
         jtfCompra.setText("");
         jtfVenta.setText("");
         jcbxProveedor.setSelectedIndex(0);
         jcbxRepuesto.setSelectedIndex(0);
-        
+    }
+    
+    private void Limpiar() {
+        Limpieza();        
         for (int i = 0; i < jtblRepExis.getRowCount(); i++) {
             modeloRepExitencia.removeRow(i);
             i-=1;
@@ -240,18 +243,26 @@ public class Repuesto_Existencia extends javax.swing.JInternalFrame {
         jPanelAcciones.setBackground(new java.awt.Color(80, 81, 79));
 
         jrbtnAdd.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnAdd);
         jrbtnAdd.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnAdd.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnAdd.setText("Agregar");
         jrbtnAdd.setEnabled(false);
+        jrbtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbtnAddActionPerformed(evt);
+            }
+        });
 
         jrbtnUpdate.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnUpdate);
         jrbtnUpdate.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnUpdate.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnUpdate.setText("Editar");
         jrbtnUpdate.setEnabled(false);
 
         jrbtnDelete.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnDelete);
         jrbtnDelete.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnDelete.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnDelete.setText("Eliminar");
@@ -305,9 +316,7 @@ public class Repuesto_Existencia extends javax.swing.JInternalFrame {
                             .addComponent(jtfCantidad)
                             .addComponent(jcbxProveedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jbtnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, 0))
+                    .addComponent(jLabel6)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(47, 47, 47)
@@ -430,6 +439,11 @@ public class Repuesto_Existencia extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jtblRepExisMouseClicked
+
+    private void jrbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnAddActionPerformed
+        // TODO add your handling code here:
+        Limpieza();
+    }//GEN-LAST:event_jrbtnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

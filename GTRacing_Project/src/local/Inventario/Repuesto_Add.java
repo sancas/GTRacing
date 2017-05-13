@@ -115,7 +115,7 @@ public class Repuesto_Add extends javax.swing.JInternalFrame {
                     foto = new ImageIcon(bf);
 
                     Image img = foto.getImage();
-                    Image newImg = img.getScaledInstance(jlblFoto.getWidth(), jlblFoto.getHeight(), Image.SCALE_DEFAULT);
+                    Image newImg = img.getScaledInstance(jlblFoto.getHeight(), jlblFoto.getHeight(), Image.SCALE_DEFAULT);
 
                     ImageIcon newIcon = new ImageIcon(newImg);
 
@@ -130,12 +130,15 @@ public class Repuesto_Add extends javax.swing.JInternalFrame {
         }
     }
     
-    private void limpieza(){
+    private void limpiar() {
         jtfDescripcion.setText("");
         jtfRepuesto.setText("");
         jlblFoto.setIcon(null);
         jbtgEstado.clearSelection();
-        
+    }
+    
+    private void limpieza() {
+        limpiar();
         for (int i = 0; i < jtblRepuestos.getRowCount(); i++) {
             modeloRepuesto.removeRow(i);
             i -= 1;
@@ -208,25 +211,32 @@ public class Repuesto_Add extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Repuestos");
-        setEnabled(false);
         setMinimumSize(new java.awt.Dimension(500, 600));
         setPreferredSize(new java.awt.Dimension(600, 800));
 
         jPanelAcciones.setBackground(new java.awt.Color(80, 81, 79));
 
         jrbtnAdd.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnAdd);
         jrbtnAdd.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnAdd.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnAdd.setText("Agregar");
         jrbtnAdd.setEnabled(false);
+        jrbtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbtnAddActionPerformed(evt);
+            }
+        });
 
         jrbtnUpdate.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnUpdate);
         jrbtnUpdate.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnUpdate.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnUpdate.setText("Editar");
         jrbtnUpdate.setEnabled(false);
 
         jrbtnDelete.setBackground(new java.awt.Color(80, 81, 79));
+        jbtgAcciones.add(jrbtnDelete);
         jrbtnDelete.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnDelete.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnDelete.setText("Eliminar");
@@ -402,7 +412,7 @@ public class Repuesto_Add extends javax.swing.JInternalFrame {
                 bite = (int) j.getSelectedFile().length();
 
                 try {
-                    Image icono = ImageIO.read(j.getSelectedFile()).getScaledInstance(jlblFoto.getWidth(), jlblFoto.getHeight(), Image.SCALE_DEFAULT);
+                    Image icono = ImageIO.read(j.getSelectedFile()).getScaledInstance(jlblFoto.getHeight(), jlblFoto.getHeight(), Image.SCALE_DEFAULT);
                     jlblFoto.setIcon(new ImageIcon(icono));
                     jlblFoto.updateUI();
                     if (jrbtnUpdate.isSelected()) {
@@ -496,6 +506,11 @@ public class Repuesto_Add extends javax.swing.JInternalFrame {
                 jrbtInactivo.setSelected(true);
         }
     }//GEN-LAST:event_jtblRepuestosMouseClicked
+
+    private void jrbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnAddActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+    }//GEN-LAST:event_jrbtnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -142,8 +142,8 @@ public class Empleados extends javax.swing.JInternalFrame {
 
         return anyo + "-" + mes + "-" + dia;
     }
-
-    private void limpieza() {
+    
+    private void limpiar() {
         jtfAPellido.setText("");
         jtfAnyo.setText("");
         jtfDomicilio.setText("");
@@ -153,7 +153,11 @@ public class Empleados extends javax.swing.JInternalFrame {
         jcbxCargos.setSelectedIndex(0);
         jcbxDia.setSelectedIndex(0);
         jcbxMes.setSelectedIndex(0);
+        jlblFoto.setIcon(null);
+    }
 
+    private void limpieza() {
+        limpiar();
         for (int i = 0; i < jTable1.getRowCount(); i++) {
             viewEmploy.removeRow(i);
             i -= 1;
@@ -194,7 +198,7 @@ public class Empleados extends javax.swing.JInternalFrame {
                     foto = new ImageIcon(bf);
 
                     Image img = foto.getImage();
-                    Image newImg = img.getScaledInstance(jlblFoto.getWidth(), jlblFoto.getHeight(), Image.SCALE_DEFAULT);
+                    Image newImg = img.getScaledInstance(jlblFoto.getHeight(), jlblFoto.getHeight(), Image.SCALE_SMOOTH);
 
                     ImageIcon newIcon = new ImageIcon(newImg);
 
@@ -386,18 +390,26 @@ public class Empleados extends javax.swing.JInternalFrame {
         jPanelAcciones.setBackground(new java.awt.Color(80, 81, 79));
 
         jrbtnAdd.setBackground(new java.awt.Color(80, 81, 79));
+        btgAcciones.add(jrbtnAdd);
         jrbtnAdd.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnAdd.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnAdd.setText("Agregar");
         jrbtnAdd.setEnabled(false);
+        jrbtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbtnAddActionPerformed(evt);
+            }
+        });
 
         jrbtnUpdate.setBackground(new java.awt.Color(80, 81, 79));
+        btgAcciones.add(jrbtnUpdate);
         jrbtnUpdate.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnUpdate.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnUpdate.setText("Editar");
         jrbtnUpdate.setEnabled(false);
 
         jrbtnDelete.setBackground(new java.awt.Color(80, 81, 79));
+        btgAcciones.add(jrbtnDelete);
         jrbtnDelete.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnDelete.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnDelete.setText("Eliminar");
@@ -552,7 +564,7 @@ public class Empleados extends javax.swing.JInternalFrame {
                 bite = (int) j.getSelectedFile().length();
 
                 try {
-                    Image icono = ImageIO.read(j.getSelectedFile()).getScaledInstance(jlblFoto.getWidth(), jlblFoto.getHeight(), Image.SCALE_DEFAULT);
+                    Image icono = ImageIO.read(j.getSelectedFile()).getScaledInstance(jlblFoto.getHeight(), jlblFoto.getHeight(), Image.SCALE_SMOOTH);
                     jlblFoto.setIcon(new ImageIcon(icono));
                     jlblFoto.updateUI();
                     if (jrbtnUpdate.isSelected()) {
@@ -717,6 +729,11 @@ public class Empleados extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jtfBuscarKeyPressed
+
+    private void jrbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnAddActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+    }//GEN-LAST:event_jrbtnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

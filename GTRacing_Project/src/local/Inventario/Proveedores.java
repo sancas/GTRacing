@@ -73,12 +73,15 @@ public class Proveedores extends javax.swing.JInternalFrame {
             Logger.getLogger(Proveedores.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private void limpieza() {
+    
+    private void limpiar() {
         jtfDireccion.setText("");
         jtfPbx.setText("");
         jtfProveedor.setText("");
+    }
 
+    private void limpieza() {
+        limpiar();
         for (int i = 0; i < jtblProveedor.getRowCount(); i++) {
             ModeloProveedor.removeRow(i);
             i -= 1;
@@ -90,7 +93,6 @@ public class Proveedores extends javax.swing.JInternalFrame {
         Roles_DAO rolDao = new Roles_DAO();
         ResultSet rs = rolDao.listaTareas();
         int acciones;
-        
         try {
             while(rs.next()){
                 acciones = rs.getInt(1);
@@ -107,14 +109,12 @@ public class Proveedores extends javax.swing.JInternalFrame {
                         jrbtnDelete.setEnabled(true);
                         break;
                 }
-                
                 if(acciones > 15)
                     break;
             }
         } catch (SQLException ex) {
             Logger.getLogger(Proveedores.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
     /**
@@ -155,18 +155,26 @@ public class Proveedores extends javax.swing.JInternalFrame {
         jPanelAcciones.setBackground(new java.awt.Color(80, 81, 79));
 
         jrbtnAdd.setBackground(new java.awt.Color(80, 81, 79));
+        btgAcciones.add(jrbtnAdd);
         jrbtnAdd.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnAdd.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnAdd.setText("Agregar");
         jrbtnAdd.setEnabled(false);
+        jrbtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbtnAddActionPerformed(evt);
+            }
+        });
 
         jrbtnUpdate.setBackground(new java.awt.Color(80, 81, 79));
+        btgAcciones.add(jrbtnUpdate);
         jrbtnUpdate.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnUpdate.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnUpdate.setText("Editar");
         jrbtnUpdate.setEnabled(false);
 
         jrbtnDelete.setBackground(new java.awt.Color(80, 81, 79));
+        btgAcciones.add(jrbtnDelete);
         jrbtnDelete.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnDelete.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnDelete.setText("Eliminar");
@@ -340,6 +348,11 @@ public class Proveedores extends javax.swing.JInternalFrame {
             jtfPbx.setText((String) ModeloProveedor.getValueAt(jtblProveedor.getSelectedRow(), 3));
         }
     }//GEN-LAST:event_jtblProveedorMouseClicked
+
+    private void jrbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnAddActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+    }//GEN-LAST:event_jrbtnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

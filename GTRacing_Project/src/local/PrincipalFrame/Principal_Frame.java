@@ -20,7 +20,6 @@ import javax.swing.ImageIcon;
 import local.DAO.Empleados_DAO;
 import local.DAO.LoginAccess_DAO;
 import local.DAO.Roles_DAO;
-import local.DAO.Usuarios_DAO;
 import local.Empleados.Cargos;
 import local.Empleados.Empleados;
 import local.Inventario.Auto_Existencia;
@@ -50,6 +49,8 @@ public class Principal_Frame extends javax.swing.JFrame {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
+        jmnVetas.setVisible(false);
+        jmnEstatictis.setVisible(false);
         loadSubMenu();
         
         //Variables de inicio
@@ -85,7 +86,7 @@ public class Principal_Frame extends javax.swing.JFrame {
     
     private void loadSubMenu(){
         Roles_DAO rolDao = new Roles_DAO();
-        ResultSet rs = rolDao.listaTareas();
+        rs = rolDao.listaTareas();
         int tarea;
         
         try {
@@ -108,6 +109,10 @@ public class Principal_Frame extends javax.swing.JFrame {
                     jmiNewAuto.setEnabled(true);
                     jmiExistenciaA.setEnabled(true);
                     jmiMarcas.setEnabled(true);
+                } else if(tarea == 22) {
+                    jmnVetas.setVisible(true);
+                } else if(tarea == 23) {
+                    jmnEstatictis.setVisible(true);
                 }
             }
         } catch (SQLException ex) {
@@ -117,7 +122,7 @@ public class Principal_Frame extends javax.swing.JFrame {
     
     private void loadImage(){
         Empleados_DAO empDao = new Empleados_DAO();
-        ResultSet rs = empDao.loadImage(local.Pool_Variable.Variables.getCurrentEmploy());
+        rs = empDao.loadImage(local.Pool_Variable.Variables.getCurrentEmploy());
         InputStream is;
         ImageIcon foto;
 

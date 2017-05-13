@@ -77,11 +77,15 @@ public class Cargos extends javax.swing.JInternalFrame {
     }
 
     //Metodo para limpiar el formulario
-    public void limpieza() {
+    public void limpiar() {
         jtaDescripcion.setText("");
         jtfCargo.setText("");
         jtfSalario.setText("");
-
+    }
+    
+    //Metodo para limpiar el table
+    public void limpieza() {
+        limpiar();
         for (int i = 0; i < jtblViewCargos.getRowCount(); i++) {
             cargosView.removeRow(i);
             i -= 1;
@@ -150,6 +154,8 @@ public class Cargos extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Cargos");
         setMinimumSize(new java.awt.Dimension(500, 450));
         setPreferredSize(new java.awt.Dimension(600, 550));
@@ -161,9 +167,6 @@ public class Cargos extends javax.swing.JInternalFrame {
         jtfBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtfBusquedaKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtfBusquedaKeyTyped(evt);
             }
         });
 
@@ -210,18 +213,26 @@ public class Cargos extends javax.swing.JInternalFrame {
         jPanelAcciones.setBackground(new java.awt.Color(80, 81, 79));
 
         jrbtnAdd.setBackground(new java.awt.Color(80, 81, 79));
+        bgpAcciones.add(jrbtnAdd);
         jrbtnAdd.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnAdd.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnAdd.setText("Agregar");
         jrbtnAdd.setEnabled(false);
+        jrbtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbtnAddActionPerformed(evt);
+            }
+        });
 
         jrbtnUpdate.setBackground(new java.awt.Color(80, 81, 79));
+        bgpAcciones.add(jrbtnUpdate);
         jrbtnUpdate.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnUpdate.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnUpdate.setText("Editar");
         jrbtnUpdate.setEnabled(false);
 
         jrbtnDelete.setBackground(new java.awt.Color(80, 81, 79));
+        bgpAcciones.add(jrbtnDelete);
         jrbtnDelete.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jrbtnDelete.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnDelete.setText("Eliminar");
@@ -281,9 +292,7 @@ public class Cargos extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel5))
+                    .addComponent(jLabel5)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanelAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -301,7 +310,7 @@ public class Cargos extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4)
                             .addComponent(jtfSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(11, 11, 11)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbtnAceptar)
                 .addContainerGap())
@@ -358,10 +367,10 @@ public class Cargos extends javax.swing.JInternalFrame {
                     setRows();
                     idCargo = -1;
                 } else {
-                    JOptionPane.showMessageDialog(null, "Lo senitmos no se pudieron ingresar los datos");
+                    JOptionPane.showMessageDialog(null, "Verifique que no tenga empleados con este cargo antes de eliminarlo.");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Debes de elegin un campo de la tabla para realizar la accion");
+                JOptionPane.showMessageDialog(null, "Debes de elegir un campo de la tabla para realizar la accion");
             }
 
         }
@@ -381,17 +390,13 @@ public class Cargos extends javax.swing.JInternalFrame {
         if (jrbtnDelete.isSelected() || jrbtnUpdate.isSelected()) {
             //Cargando los datos a los jTextFiel
             jtfCargo.setText((String) cargosView.getValueAt(jtblViewCargos.getSelectedRow(), 1));
-
+            jtfSalario.setText(cargosView.getValueAt(jtblViewCargos.getSelectedRow(), 2).toString());
             jtaDescripcion.setText((String) cargosView.getValueAt(jtblViewCargos.getSelectedRow(), 3));
 
             //Ingresando el id
             idCargo = (int) cargosView.getValueAt(jtblViewCargos.getSelectedRow(), 0);
         }
     }//GEN-LAST:event_jtblViewCargosMouseClicked
-
-    private void jtfBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBusquedaKeyTyped
-        
-    }//GEN-LAST:event_jtfBusquedaKeyTyped
 
     private void jtfBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBusquedaKeyPressed
         String search = jtfBusqueda.getText();
@@ -419,6 +424,11 @@ public class Cargos extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jtfBusquedaKeyPressed
+
+    private void jrbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnAddActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+    }//GEN-LAST:event_jrbtnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

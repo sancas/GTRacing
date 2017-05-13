@@ -103,12 +103,15 @@ public class Auto_Existencia extends javax.swing.JInternalFrame {
         });
     }
     
-    private void Limpiar() {
+    private void Limpieza() {
         jcbxAuto.setSelectedIndex(0);
         jcbxProveedor.setSelectedIndex(0);
         jtfCompra.setText("");
         jtfVenta.setText("");
-        
+    }
+    
+    private void Limpiar() {
+        Limpieza();
         for (int i = 0; i < jtblAutoExistencia.getRowCount(); i++) {
             modelAutoExistencia.removeRow(i);
             i -= 1;
@@ -187,6 +190,11 @@ public class Auto_Existencia extends javax.swing.JInternalFrame {
         jrbtnAdd.setForeground(new java.awt.Color(242, 95, 92));
         jrbtnAdd.setText("Agregar");
         jrbtnAdd.setEnabled(false);
+        jrbtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbtnAddActionPerformed(evt);
+            }
+        });
 
         jrbtnUpdate.setBackground(new java.awt.Color(80, 81, 79));
         jbtgAcciones.add(jrbtnUpdate);
@@ -397,6 +405,11 @@ public class Auto_Existencia extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jtblAutoExistenciaMouseClicked
+
+    private void jrbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnAddActionPerformed
+        // TODO add your handling code here:
+        Limpieza();
+    }//GEN-LAST:event_jrbtnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

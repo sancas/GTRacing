@@ -41,10 +41,6 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jbtnAceptar" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -55,7 +51,7 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" alignment="1" pref="577" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="1" pref="614" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -68,51 +64,59 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jchkCargos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkCargosAdd" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkCargoEdit" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkCargosDel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkAutosAdd" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkAutos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkAutosEdit" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkAutosDel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jchkEmpleados" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkEmpleadosAdd" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkEmpleadosEdit" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkEmpleadosDel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkRepuestos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkRepuestosAdd" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkRepuestosEdit" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkRepuestosDel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jchkProveedorEdit" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jchkProveedorDel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jchkProveedorAdd" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jchkProveedor" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkCargos" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkCargosAdd" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkCargoEdit" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkCargosDel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkAutosAdd" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkAutos" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkAutosEdit" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkAutosDel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jchkEmpleados" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkEmpleadosAdd" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkEmpleadosEdit" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkEmpleadosDel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkRepuestos" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkRepuestosAdd" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkRepuestosEdit" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkRepuestosDel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jchkRoles" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jchkRolesAdd" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jchkRolesEdit" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jchkRolesDel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkProveedorEdit" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkProveedorDel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkProveedorAdd" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jchkProveedor" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jchkUsuarios" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jchkUsuariosAdd" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jchkUsuariosEdit" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jchkUsuariosDel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jchkVentas" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jchkEstadisticas" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jchkUsuarios" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jchkUsuariosAdd" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jchkUsuariosEdit" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jchkUsuariosDel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Component id="jchkVentas" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jchkEstadisticas" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
+                          <Component id="jbtnAceptar" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -130,7 +134,7 @@
                   <Component id="jtfBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="128" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="162" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -143,70 +147,36 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="jchkEmpleados" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace pref="33" max="-2" attributes="0"/>
-                                  <Component id="jchkEmpleadosAdd" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jchkEmpleadosEdit" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jchkEmpleadosDel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jchkRoles" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                  <Component id="jchkRolesAdd" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jchkRolesEdit" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jchkRolesDel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jchkCargos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Component id="jchkCargosAdd" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jchkCargoEdit" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jchkCargosDel" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jchkRoles" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                          <Component id="jchkRolesAdd" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jchkRolesEdit" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jchkRolesDel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jchkRepuestos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Component id="jchkRepuestosAdd" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jchkRepuestosEdit" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jchkRepuestosDel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jchkAutos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Component id="jchkAutosAdd" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jchkAutosEdit" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jchkAutosDel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jchkProveedor" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Component id="jchkProveedorAdd" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jchkProveedorEdit" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jchkProveedorDel" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jchkCargos" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                          <Component id="jchkCargosAdd" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jchkCargoEdit" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jchkCargosDel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jchkEmpleados" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="jchkEmpleadosAdd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jchkEmpleadosEdit" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jchkEmpleadosDel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jchkUsuarios" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="jchkUsuariosAdd" min="-2" max="-2" attributes="0"/>
@@ -214,10 +184,41 @@
                       <Component id="jchkUsuariosEdit" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jchkUsuariosDel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="jchkVentas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="jchkEstadisticas" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jchkAutos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="jchkAutosAdd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jchkAutosEdit" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jchkAutosDel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jchkRepuestos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="jchkRepuestosAdd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jchkRepuestosEdit" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jchkRepuestosDel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jchkProveedor" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="jchkProveedorAdd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jchkProveedorEdit" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jchkProveedorDel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -639,6 +640,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="4f" green="51" red="50" type="rgb"/>
             </Property>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="jbtgAcciones"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="16" style="0"/>
             </Property>
@@ -648,11 +652,17 @@
             <Property name="text" type="java.lang.String" value="Agregar"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbtnAddActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jrbtnUpdate">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="4f" green="51" red="50" type="rgb"/>
+            </Property>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="jbtgAcciones"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="16" style="0"/>
@@ -668,6 +678,9 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="4f" green="51" red="50" type="rgb"/>
+            </Property>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="jbtgAcciones"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="16" style="0"/>
