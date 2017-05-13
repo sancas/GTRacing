@@ -119,7 +119,7 @@ public class Roles extends javax.swing.JInternalFrame {
             }
         }
         
-        if(jrbtAdd.isSelected()){
+        if(jrbtnAdd.isSelected()){
             idRoles = rolDao.getCurrentRol();
         }
         isAdd = rolDao.inputTareas(idTareas, idRoles);
@@ -206,15 +206,15 @@ public class Roles extends javax.swing.JInternalFrame {
                 acciones = rs.getInt(1);
                 switch(acciones){
                     case 7:
-                        jrbtAdd.setEnabled(true);
+                        jrbtnAdd.setEnabled(true);
                         break;
                         
                     case 8:
-                        jrbtUpdate.setEnabled(true);
+                        jrbtnUpdate.setEnabled(true);
                         break;
                         
                     case 9:
-                        jrbtDelete.setEnabled(true);
+                        jrbtnDelete.setEnabled(true);
                         break;
                 }
                 
@@ -260,11 +260,6 @@ public class Roles extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jbtgAcciones = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jrbtAdd = new javax.swing.JRadioButton();
-        jrbtUpdate = new javax.swing.JRadioButton();
-        jrbtDelete = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jtfBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -305,66 +300,21 @@ public class Roles extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jtfDescripcion = new javax.swing.JTextArea();
         jbtnAceptar = new javax.swing.JButton();
-        jbtnCancelar = new javax.swing.JButton();
+        jPanelAcciones = new javax.swing.JPanel();
+        jrbtnAdd = new javax.swing.JRadioButton();
+        jrbtnUpdate = new javax.swing.JRadioButton();
+        jrbtnDelete = new javax.swing.JRadioButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel4.setText("Acciones");
-
-        jbtgAcciones.add(jrbtAdd);
-        jrbtAdd.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jrbtAdd.setText("Agregar");
-        jrbtAdd.setEnabled(false);
-
-        jbtgAcciones.add(jrbtUpdate);
-        jrbtUpdate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jrbtUpdate.setText("Editar");
-        jrbtUpdate.setEnabled(false);
-
-        jbtgAcciones.add(jrbtDelete);
-        jrbtDelete.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jrbtDelete.setText("Eliminar");
-        jrbtDelete.setEnabled(false);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrbtUpdate)
-                            .addComponent(jrbtAdd)
-                            .addComponent(jrbtDelete))))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel4)
-                .addGap(70, 70, 70)
-                .addComponent(jrbtAdd)
-                .addGap(18, 18, 18)
-                .addComponent(jrbtUpdate)
-                .addGap(18, 18, 18)
-                .addComponent(jrbtDelete)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        setTitle("Roles");
+        setMinimumSize(new java.awt.Dimension(600, 650));
+        setPreferredSize(new java.awt.Dimension(650, 700));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel1.setText("Buscar");
+        jLabel1.setText("Buscar:");
 
         jtfBuscar.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
@@ -523,17 +473,17 @@ public class Roles extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel2.setText("Rol");
+        jLabel2.setText("Rol:");
 
         jtfRol.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel3.setText("Descripcion");
+        jLabel3.setText("Descripcion:");
 
         jScrollPane2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jtfDescripcion.setColumns(20);
-        jtfDescripcion.setRows(5);
+        jtfDescripcion.setRows(3);
         jScrollPane2.setViewportView(jtfDescripcion);
 
         jbtnAceptar.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -544,168 +494,209 @@ public class Roles extends javax.swing.JInternalFrame {
             }
         });
 
-        jbtnCancelar.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jbtnCancelar.setText("Cancelar");
+        jPanelAcciones.setBackground(new java.awt.Color(80, 81, 79));
+
+        jrbtnAdd.setBackground(new java.awt.Color(80, 81, 79));
+        jrbtnAdd.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        jrbtnAdd.setForeground(new java.awt.Color(242, 95, 92));
+        jrbtnAdd.setText("Agregar");
+        jrbtnAdd.setEnabled(false);
+
+        jrbtnUpdate.setBackground(new java.awt.Color(80, 81, 79));
+        jrbtnUpdate.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        jrbtnUpdate.setForeground(new java.awt.Color(242, 95, 92));
+        jrbtnUpdate.setText("Editar");
+        jrbtnUpdate.setEnabled(false);
+
+        jrbtnDelete.setBackground(new java.awt.Color(80, 81, 79));
+        jrbtnDelete.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        jrbtnDelete.setForeground(new java.awt.Color(242, 95, 92));
+        jrbtnDelete.setText("Eliminar");
+        jrbtnDelete.setEnabled(false);
+
+        javax.swing.GroupLayout jPanelAccionesLayout = new javax.swing.GroupLayout(jPanelAcciones);
+        jPanelAcciones.setLayout(jPanelAccionesLayout);
+        jPanelAccionesLayout.setHorizontalGroup(
+            jPanelAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAccionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jrbtnAdd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jrbtnUpdate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jrbtnDelete)
+                .addContainerGap())
+        );
+        jPanelAccionesLayout.setVerticalGroup(
+            jPanelAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAccionesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbtnAdd)
+                    .addComponent(jrbtnDelete)
+                    .addComponent(jrbtnUpdate))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelAcciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jchkCargos)
-                                    .addComponent(jchkCargosAdd)
-                                    .addComponent(jchkCargoEdit)
-                                    .addComponent(jchkCargosDel)
-                                    .addComponent(jchkRepuestos)
-                                    .addComponent(jchkRepuestosAdd)
-                                    .addComponent(jchkRepuestosEdit)
-                                    .addComponent(jchkRepuestosDel))
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jchkEmpleados)
-                                            .addComponent(jchkEmpleadosAdd)
-                                            .addComponent(jchkEmpleadosEdit)
-                                            .addComponent(jchkEmpleadosDel)
-                                            .addComponent(jchkAutos)
-                                            .addComponent(jchkAutosEdit)
-                                            .addComponent(jchkAutosDel))
-                                        .addGap(37, 37, 37)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jchkRoles)
-                                            .addComponent(jchkRolesAdd)
-                                            .addComponent(jchkRolesEdit)
-                                            .addComponent(jchkRolesDel)
-                                            .addComponent(jchkVentas))
-                                        .addGap(39, 39, 39)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jchkUsuarios)
-                                                    .addComponent(jchkUsuariosAdd)
-                                                    .addComponent(jchkUsuariosEdit)
-                                                    .addComponent(jchkUsuariosDel))
-                                                .addGap(37, 37, 37)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jchkProveedorAdd)
-                                                    .addComponent(jchkProveedorEdit)
-                                                    .addComponent(jchkProveedorDel)
-                                                    .addComponent(jchkProveedor)))
-                                            .addComponent(jchkEstadisticas)))
-                                    .addComponent(jchkAutosAdd)))
+                        .addComponent(jbtnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jtfRol))
+                        .addGap(10, 10, 10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfRol, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jtfBuscar)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jchkCargos)
+                            .addComponent(jchkCargosAdd)
+                            .addComponent(jchkCargoEdit)
+                            .addComponent(jchkCargosDel)
+                            .addComponent(jchkAutosAdd)
+                            .addComponent(jchkAutos)
+                            .addComponent(jchkAutosEdit)
+                            .addComponent(jchkAutosDel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jbtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(29, 29, 29)
-                        .addComponent(jtfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)))
-                .addGap(49, 49, 49))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jchkEmpleados)
+                            .addComponent(jchkEmpleadosAdd)
+                            .addComponent(jchkEmpleadosEdit)
+                            .addComponent(jchkEmpleadosDel)
+                            .addComponent(jchkRepuestos)
+                            .addComponent(jchkRepuestosAdd)
+                            .addComponent(jchkRepuestosEdit)
+                            .addComponent(jchkRepuestosDel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jchkProveedorEdit)
+                            .addComponent(jchkProveedorDel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jchkProveedorAdd)
+                                    .addComponent(jchkProveedor)
+                                    .addComponent(jchkRoles)
+                                    .addComponent(jchkRolesAdd)
+                                    .addComponent(jchkRolesEdit)
+                                    .addComponent(jchkRolesDel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jchkUsuarios)
+                                    .addComponent(jchkUsuariosAdd)
+                                    .addComponent(jchkUsuariosEdit)
+                                    .addComponent(jchkUsuariosDel)
+                                    .addComponent(jchkVentas)
+                                    .addComponent(jchkEstadisticas))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jPanelAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jtfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jtfRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jtfRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jchkCargos)
-                    .addComponent(jchkEmpleados)
-                    .addComponent(jchkRoles)
-                    .addComponent(jchkUsuarios)
-                    .addComponent(jchkProveedor))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jchkCargosAdd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkCargoEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkCargosDel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jchkEmpleadosAdd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkEmpleadosEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkEmpleadosDel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jchkRolesAdd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkRolesEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkRolesDel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jchkUsuariosAdd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkUsuariosEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkUsuariosDel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jchkProveedorAdd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkProveedorEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkProveedorDel)))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jchkRepuestos)
-                    .addComponent(jchkAutos)
-                    .addComponent(jchkVentas)
-                    .addComponent(jchkEstadisticas))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jchkRepuestosAdd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkRepuestosEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jchkRepuestosDel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jchkAutosAdd)
-                            .addComponent(jbtnAceptar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jchkEmpleados)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jchkEmpleadosAdd)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jchkEmpleadosEdit)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jchkEmpleadosDel))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jchkRoles)
+                                    .addGap(8, 8, 8)
+                                    .addComponent(jchkRolesAdd)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jchkRolesEdit)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jchkRolesDel)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jchkCargos)
+                                .addGap(8, 8, 8)
+                                .addComponent(jchkCargosAdd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jchkCargoEdit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jchkCargosDel)))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jchkRepuestos)
+                                .addGap(8, 8, 8)
+                                .addComponent(jchkRepuestosAdd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jchkRepuestosEdit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jchkRepuestosDel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jchkAutos)
+                                .addGap(8, 8, 8)
+                                .addComponent(jchkAutosAdd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jchkAutosEdit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jchkAutosDel))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jbtnCancelar)))))
-                .addGap(22, 22, 22))
+                                .addComponent(jchkProveedor)
+                                .addGap(8, 8, 8)
+                                .addComponent(jchkProveedorAdd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jchkProveedorEdit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jchkProveedorDel))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jchkUsuarios)
+                        .addGap(8, 8, 8)
+                        .addComponent(jchkUsuariosAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jchkUsuariosEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jchkUsuariosDel)
+                        .addGap(18, 18, 18)
+                        .addComponent(jchkVentas)
+                        .addGap(8, 8, 8)
+                        .addComponent(jchkEstadisticas)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbtnAceptar)
+                .addContainerGap())
         );
 
         pack();
@@ -714,7 +705,7 @@ public class Roles extends javax.swing.JInternalFrame {
     private void jbtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAceptarActionPerformed
         boolean isAction = giveAction();
         if(!jtfRol.getText().isEmpty() && !jtfDescripcion.getText().isEmpty() && isAction){
-            if(jrbtAdd.isSelected()){
+            if(jrbtnAdd.isSelected()){
                 int i;
                 int o;
                 
@@ -728,7 +719,7 @@ public class Roles extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Error al ingresar datos");
                 }
                 
-            } else if(jrbtUpdate.isSelected()){
+            } else if(jrbtnUpdate.isSelected()){
                 int i = rolDao.updateRol(idRoles, jtfRol.getText(), jtfDescripcion.getText());
                 int o = deleteTareasRol();
                 int u = setTareas();
@@ -741,7 +732,7 @@ public class Roles extends javax.swing.JInternalFrame {
                 }
                 
                 idRoles = -1;
-            } else if(jrbtDelete.isSelected()){
+            } else if(jrbtnDelete.isSelected()){
                 int o = deleteTareasRol();
                 int i = rolDao.deleteRol(idRoles);
                 
@@ -848,7 +839,7 @@ public class Roles extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jchkAutosMouseClicked
 
     private void jtblRolesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtblRolesMouseClicked
-        if(jrbtDelete.isSelected() || jrbtUpdate.isSelected()){
+        if(jrbtnDelete.isSelected() || jrbtnUpdate.isSelected()){
             idRoles = (int) viewRoles.getValueAt(jtblRoles.getSelectedRow(), 0);
             jtfRol.setText((String) viewRoles.getValueAt(jtblRoles.getSelectedRow(), 1));
             jtfDescripcion.setText((String) viewRoles.getValueAt(jtblRoles.getSelectedRow(), 2));
@@ -861,13 +852,11 @@ public class Roles extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelAcciones;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.ButtonGroup jbtgAcciones;
     private javax.swing.JButton jbtnAceptar;
-    private javax.swing.JButton jbtnCancelar;
     private javax.swing.JCheckBox jchkAutos;
     private javax.swing.JCheckBox jchkAutosAdd;
     private javax.swing.JCheckBox jchkAutosDel;
@@ -898,9 +887,9 @@ public class Roles extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox jchkUsuariosDel;
     private javax.swing.JCheckBox jchkUsuariosEdit;
     private javax.swing.JCheckBox jchkVentas;
-    private javax.swing.JRadioButton jrbtAdd;
-    private javax.swing.JRadioButton jrbtDelete;
-    private javax.swing.JRadioButton jrbtUpdate;
+    private javax.swing.JRadioButton jrbtnAdd;
+    private javax.swing.JRadioButton jrbtnDelete;
+    private javax.swing.JRadioButton jrbtnUpdate;
     private javax.swing.JTable jtblRoles;
     private javax.swing.JTextField jtfBuscar;
     private javax.swing.JTextArea jtfDescripcion;

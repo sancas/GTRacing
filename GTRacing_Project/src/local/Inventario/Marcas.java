@@ -124,11 +124,6 @@ public class Marcas extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jbtgAcciones = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jrbtnAdd = new javax.swing.JRadioButton();
-        jrbtnUpdate = new javax.swing.JRadioButton();
-        jrbtnDelete = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtblMarcas = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -136,59 +131,18 @@ public class Marcas extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jcbxPais = new javax.swing.JComboBox<>();
         jbtnAceptar = new javax.swing.JButton();
-        jbtnCancelar = new javax.swing.JButton();
+        jPanelAcciones = new javax.swing.JPanel();
+        jrbtnAdd = new javax.swing.JRadioButton();
+        jrbtnUpdate = new javax.swing.JRadioButton();
+        jrbtnDelete = new javax.swing.JRadioButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel1.setText("Acciones");
-
-        jbtgAcciones.add(jrbtnAdd);
-        jrbtnAdd.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jrbtnAdd.setText("Agregar");
-        jrbtnAdd.setEnabled(false);
-
-        jbtgAcciones.add(jrbtnUpdate);
-        jrbtnUpdate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jrbtnUpdate.setText("Editar");
-        jrbtnUpdate.setEnabled(false);
-
-        jbtgAcciones.add(jrbtnDelete);
-        jrbtnDelete.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jrbtnDelete.setText("Eliminar");
-        jrbtnDelete.setEnabled(false);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jrbtnUpdate)
-                    .addComponent(jrbtnDelete)
-                    .addComponent(jLabel1)
-                    .addComponent(jrbtnAdd))
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel1)
-                .addGap(48, 48, 48)
-                .addComponent(jrbtnAdd)
-                .addGap(18, 18, 18)
-                .addComponent(jrbtnUpdate)
-                .addGap(18, 18, 18)
-                .addComponent(jrbtnDelete)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        setTitle("Marcas");
+        setMinimumSize(new java.awt.Dimension(550, 400));
+        setPreferredSize(new java.awt.Dimension(600, 450));
 
         jtblMarcas.setModel(modeloMarcas);
         jtblMarcas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -199,7 +153,7 @@ public class Marcas extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtblMarcas);
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel2.setText("Marca");
+        jLabel2.setText("Marca:");
 
         jtfMarcas.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
@@ -217,55 +171,87 @@ public class Marcas extends javax.swing.JInternalFrame {
             }
         });
 
-        jbtnCancelar.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jbtnCancelar.setText("Cancelar");
+        jPanelAcciones.setBackground(new java.awt.Color(80, 81, 79));
+
+        jrbtnAdd.setBackground(new java.awt.Color(80, 81, 79));
+        jrbtnAdd.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        jrbtnAdd.setForeground(new java.awt.Color(242, 95, 92));
+        jrbtnAdd.setText("Agregar");
+        jrbtnAdd.setEnabled(false);
+
+        jrbtnUpdate.setBackground(new java.awt.Color(80, 81, 79));
+        jrbtnUpdate.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        jrbtnUpdate.setForeground(new java.awt.Color(242, 95, 92));
+        jrbtnUpdate.setText("Editar");
+        jrbtnUpdate.setEnabled(false);
+
+        jrbtnDelete.setBackground(new java.awt.Color(80, 81, 79));
+        jrbtnDelete.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        jrbtnDelete.setForeground(new java.awt.Color(242, 95, 92));
+        jrbtnDelete.setText("Eliminar");
+        jrbtnDelete.setEnabled(false);
+
+        javax.swing.GroupLayout jPanelAccionesLayout = new javax.swing.GroupLayout(jPanelAcciones);
+        jPanelAcciones.setLayout(jPanelAccionesLayout);
+        jPanelAccionesLayout.setHorizontalGroup(
+            jPanelAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAccionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jrbtnAdd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jrbtnUpdate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jrbtnDelete)
+                .addContainerGap())
+        );
+        jPanelAccionesLayout.setVerticalGroup(
+            jPanelAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAccionesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbtnAdd)
+                    .addComponent(jrbtnDelete)
+                    .addComponent(jrbtnUpdate))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelAcciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 21, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addGap(34, 34, 34)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbtnAceptar)
-                                .addGap(30, 30, 30)
-                                .addComponent(jbtnCancelar))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtfMarcas)
-                                .addComponent(jcbxPais, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(143, 143, 143))))
+                            .addComponent(jtfMarcas)
+                            .addComponent(jcbxPais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addComponent(jPanelAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtfMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                    .addComponent(jtfMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jcbxPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtnAceptar)
-                    .addComponent(jbtnCancelar))
-                .addGap(39, 39, 39))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbtnAceptar)
+                .addContainerGap())
         );
 
         pack();
@@ -330,14 +316,12 @@ public class Marcas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelAcciones;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.ButtonGroup jbtgAcciones;
     private javax.swing.JButton jbtnAceptar;
-    private javax.swing.JButton jbtnCancelar;
     private javax.swing.JComboBox<String> jcbxPais;
     private javax.swing.JRadioButton jrbtnAdd;
     private javax.swing.JRadioButton jrbtnDelete;
