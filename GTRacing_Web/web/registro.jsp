@@ -155,7 +155,7 @@
 
                         EncriptadorPassword encryp = new EncriptadorPassword("J@va3ncr1p73r");
 
-                        String pNombre = request.getParameter("pNombe"), sNombre = request.getParameter("sNombre");
+                        String pNombre = request.getParameter("pNombre"), sNombre = request.getParameter("sNombre");
                         String pApellido = request.getParameter("pApellido"), sApellido = request.getParameter("sApellido");
                         String usuario = request.getParameter("username"), passwd = request.getParameter("passwd"), dia = request.getParameter("dia");
                         String mes = request.getParameter("mes"), anyo = request.getParameter("anyo");
@@ -176,7 +176,7 @@
                                 }
                                 response.sendRedirect("registro_cuenta.jsp");
                             } else { %>
-                <p>Error al ingredar el usario!</p>
+                <p>Error al ingresar el usario!</p>
                 <%
                     }
                 } else { %>

@@ -61,14 +61,22 @@
                             if (mySession.getAttribute("currentUser") != null) {
                         %>
                         <li><a href="logout.jsp">Logout</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi Cuenta <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="cuentas.jsp">Mi Usuario</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="compras.jsp">Mis Compras</a></li>
+                            </ul>
+                        </li>
                             <%
                             } else {
                             %>
                         <li><a href="login.jsp">Login</a></li>
+                        <li><a href="registro.jsp">Registrate</a></li>
                             <%
                                 }
                             %>
-                        <li><a href="registro.jsp">Registrate</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

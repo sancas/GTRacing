@@ -89,7 +89,7 @@
                 <%
                     if(request.getParameter("btnFinalizar") != null){
                         RegUser reg = new RegUser();
-                        int numTarjeta = Integer.parseInt(request.getParameter("carNum")), secureCod = Integer.parseInt(request.getParameter("secureCode"));
+                        int numTarjeta = Integer.parseInt(request.getParameter("cardNum")), secureCod = Integer.parseInt(request.getParameter("secureCode"));
                         double cantidad = Double.parseDouble(request.getParameter("cantidad"));
                         
                         
@@ -103,7 +103,7 @@
                             <p> Error al ingresar la cuenta</p>
                             <%}
                         }%>
-                        <p>La cantidad debe de ser mayor a 0</p>
+                        <p>La cantidad debe de ser mayor a </p>
                     <%}
                 %>
             </div>

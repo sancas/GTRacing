@@ -36,7 +36,7 @@ public class RegUser {
             java.sql.Date sqlDate = new Date(myDate.getTime());
             
             myConn.EstablecerConn();
-            myPstat = myConn.con.prepareStatement("INSERT INTO public.usuarioweb(pname, sname, papellido, sapellido, username, userpwd, fechanac) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            myPstat = myConn.con.prepareStatement("INSERT INTO usuarioweb(pname, sname, papellido, sapellido, username, userpwd, fechanac) VALUES (?, ?, ?, ?, ?, ?, ?)");
             myPstat.setString(1, pNom);
             myPstat.setString(2, sNom);
             myPstat.setString(3, pApel);

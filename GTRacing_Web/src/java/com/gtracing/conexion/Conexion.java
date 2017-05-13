@@ -24,43 +24,18 @@ import javax.swing.JOptionPane;
 public class Conexion {
     public Connection con;
     
-    private String getConnectionString() {
-        String sConnectionString = null;
-        String host = null, dbname = null, username = null, password = null;
-        int port = 0;
-        Gson gson = new Gson();
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("conf.json"));
-            Result result = gson.fromJson(br, Result.class);
-            if (result != null)
-            {
-                Database db = result.getDatabase();
-                host = db.getHost();
-                port = db.getPort();
-                dbname = db.getDbname();
-                username = db.getUsername();
-                password = db.getPassword();
-            }
-            sConnectionString = "jdbc:postgresql://"
-                    + host + ":"
-                    + port + "/"
-                    + dbname + "?"
-                    + "user=" + username + "&"
-                    + "password=" + password;
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return sConnectionString;
-    }
-    
     public void EstablecerConn(){
+        String url = "jdbc:postgresql://localhost:5432/GTRacing";
+        String user="postgres";
+        String passwd="j@vA4dv@nC3d#";
+        
         try {
-            String cadena = getConnectionString();
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection(cadena);
-        } 
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error al conectar con la base de datos: " + e);
+            this.con = DriverManager.getConnection(url,user,passwd);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
