@@ -27,6 +27,19 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <style type="text/css">
+            /* Credit to bootsnipp.com for the css for the color graph */
+            .colorgraph {
+                height: 5px;
+                border-top: 0;
+                background: #c4e17f;
+                border-radius: 5px;
+                background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+                background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+                background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+                background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+            }
+        </style>
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -63,7 +76,7 @@
                         <button type="submit" class="btn btn-default">Buscar</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="#">Loging</a><span class="sr-only">(current)</span></li>
+                        <li class="active"><a href="#">Login</a><span class="sr-only">(current)</span></li>
                         <li><a href="registro.jsp">Registrate</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -71,49 +84,123 @@
         </nav>
 
         <div class="container">
-            <div class="jumbotron">
-                <form name="ingreso" action="login.jsp" method="post">
-                    <div class="form-group">
-                        <label for="Usuario">Usuario</label>
-                        <input type="text" name="usuario" class="form-control" id="Usuario" placeholder="juan97">
-                    </div>
-                    <div class="form-group">
-                        <label for="Passwprd1">Contrase&ntilde;a</label>
-                        <input type="password" name="passwd" class="form-control" id="Password1" placeholder="Password">
-                    </div>
-                    
-                    <button type="submit" name="Ingresar" class="btn btn-primary">Ingresar</button>
-                </form>
+            <div class="row" style="margin-top:20px">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                    <form name="ingreso" action="login.jsp" method="post">
+                        <fieldset>
+                            <h2>¡Inicie Sesion!</h2>
+                            <hr class="colorgraph">
+                            <div class="form-group">
+                                <input type="text" name="usuario" id="Usuario" class="form-control input-lg" placeholder="Usuario">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="passwd" id="password1" class="form-control input-lg" placeholder="Password">
+                            </div>
+                            <span class="button-checkbox">
+                                <button type="button" class="btn" data-color="info">Recuerdame</button>
+                                <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
+                            </span>
+                            <hr class="colorgraph">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <input type="submit" name   ="Ingresar" class="btn btn-lg btn-success btn-block" value="Logearse">
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <a href="registro.jsp" class="btn btn-lg btn-primary btn-block">Registrarse</a>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    
+
     <%
         InicioSesion log = new InicioSesion();
-        
-        if(request.getParameter("Ingresar") != null){
+
+        if (request.getParameter("Ingresar") != null) {
             String username = request.getParameter("usuario");
             String myPasswd = request.getParameter("passwd");
-            
+
             int isLogeable = log.Login(username, myPasswd);
-            
-            if(isLogeable > 0){
+
+            if (isLogeable > 0) {
                 HttpSession mySession = request.getSession();
                 mySession.setAttribute("currentUser", username);
                 ResultSet rs = log.userData(username);
-                if(rs.next()){
+                if (rs.next()) {
                     mySession.setAttribute("idUser", rs.getInt(1));
                 }
                 response.sendRedirect("index.jsp");
-            } else{
+            } else {
                 response.sendRedirect("login_error.jsp");
             }
         }
     %>
-    
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.button-checkbox').each(function () {
+                var $widget = $(this),
+                        $button = $widget.find('button'),
+                        $checkbox = $widget.find('input:checkbox'),
+                        color = $button.data('color'),
+                        settings = {
+                            on: {
+                                icon: 'glyphicon glyphicon-check'
+                            },
+                            off: {
+                                icon: 'glyphicon glyphicon-unchecked'
+                            }
+                        };
+
+                $button.on('click', function () {
+                    $checkbox.prop('checked', !$checkbox.is(':checked'));
+                    $checkbox.triggerHandler('change');
+                    updateDisplay();
+                });
+
+                $checkbox.on('change', function () {
+                    updateDisplay();
+                });
+
+                function updateDisplay() {
+                    var isChecked = $checkbox.is(':checked');
+                    // Set the button's state
+                    $button.data('state', (isChecked) ? "on" : "off");
+
+                    // Set the button's icon
+                    $button.find('.state-icon')
+                            .removeClass()
+                            .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+                    // Update the button's color
+                    if (isChecked) {
+                        $button
+                                .removeClass('btn-default')
+                                .addClass('btn-' + color + ' active');
+                    } else
+                    {
+                        $button
+                                .removeClass('btn-' + color + ' active')
+                                .addClass('btn-default');
+                    }
+                }
+                function init() {
+                    updateDisplay();
+                    // Inject the icon if applicable
+                    if ($button.find('.state-icon').length == 0) {
+                        $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+                    }
+                }
+                init();
+            });
+        });
+    </script>
 </body>
 </html>

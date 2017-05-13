@@ -171,7 +171,7 @@ create table usuarioweb(
     pApellido varchar(40) not null,
     sApellido varchar(40) null,
     userName varchar(15) not null,
-    userPwd varchar(15) not null,
+    userPwd varchar(250) not null,
     fechaNac date not null,
     fechaAdd timestamp
     default current_timestamp,
