@@ -4,6 +4,9 @@
     Author     : Usuario
 --%>
 
+<%@page import="com.gtracing.autos.Autos"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.gtracing.repuesto.Repuestos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page session="true" %>
 
@@ -69,9 +72,9 @@
                                 <li><a href="compras.jsp">Mis Compras</a></li>
                             </ul>
                         </li>
-                            <%
-                            } else {
-                            %>
+                        <%
+                        } else {
+                        %>
                         <li><a href="login.jsp">Login</a></li>
                         <li><a href="registro.jsp">Registrate</a></li>
                             <%
@@ -88,71 +91,52 @@
             <div class="jumbotron">
                 <h3>Nuestros mejores Productos</h3>
                 <div class="row">
+                    <%
+                        Repuestos myRep = new Repuestos();
+                        Autos myCar = new Autos();
+                        ResultSet rs = myRep.getRepuestosIndex();
+                        String nombreProducto = "", Descripcion = "";
+                        int id = 0;
+
+                        while (rs.next()) {
+                            id = rs.getInt(1);
+                            nombreProducto = rs.getString(2);
+                            Descripcion = rs.getString(4);
+                    %>
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail">
-                            <img src="..." alt="...">
+                            <img src="<%=request.getContextPath()%>/MostrarFoto?idfoto=<%=id%>" alt="<%=nombreProducto%>" width="240" height="200">
                             <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
+                                <h3><%=nombreProducto%></h3>
+                                <p><%=Descripcion%></p>
                                 <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
                             </div>
                         </div>
                     </div>
+                    <% }
+                        rs.close();
+                        rs = myCar.getAutosIndex();
+
+                        while (rs.next()) {
+                            id = rs.getInt(1);
+                            nombreProducto = rs.getString(2);
+                            Descripcion = rs.getString(4);
+                            Descripcion += " " + rs.getString(5);
+                    %>
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail">
-                            <img src="..." alt="...">
+                            <img src="<%=request.getContextPath()%>/MostrarFotoAuto?idfoto=<%=id%>" alt="<%=nombreProducto%>" width="240" height="200">
                             <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
+                                <h3><%=nombreProducto%></h3>
+                                <p><%=Descripcion%></p>
                                 <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail">
-                            <img src="..." alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail">
-                            <img src="..." alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail">
-                            <img src="..." alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail">
-                            <img src="..." alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <% }%>
+                </div><!-- Fin div.row -->
+            </div><!-- Fin div.jumbotron -->
+        </div><!-- Fin div.container -->
         <!-- Fin del contenido -->
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

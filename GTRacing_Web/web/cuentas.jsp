@@ -22,7 +22,11 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         
         <!-- Codigo CSS -->
-        <style></
+        <style>
+            .midiv{
+                display: block
+            }
+        </style>
     </head>
     <body>
         <%
@@ -92,12 +96,11 @@
         <!-- Contenido de la pagina -->
         <div class="container">
             <div class="jumbotron">
-                <div class="col-md-4 col-md-offset-2 midiv">
+                <div class="col-md-4 col-md-offset-2">
                     <img src="img/usuario.png" alt="Usuario" class="img-circle img-responsive">
                     <h3>Bienvenido <%= nombre %></h3>
                 </div>
-                <div class="col-md-4 col-md-offset-2 midiv">
-                    <img src="img/usuario.png" alt="Usuario" class="img-circle img-responsive">
+                <div class="col-md-4 ">
                     <h3>Bienvenido <%= nombre %></h3>
                 </div>
             </div>
