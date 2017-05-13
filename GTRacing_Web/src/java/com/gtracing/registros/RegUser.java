@@ -26,9 +26,8 @@ public class RegUser {
     ResultSet myRs;
     
     public int reguistroUsuario(String pNom, String sNom, String pApel, String sApel, String user, String pass, String dia, String mes, String anyo){
-        int isReg = 0;
+        int isReg;
         String fecha = formatoFecha(anyo, mes, dia);
-        
         try {
             //Formateando la fecha para ingresarla a la bd
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
@@ -48,20 +47,15 @@ public class RegUser {
             isReg = myPstat.executeUpdate();
             
             myPstat.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(RegUser.class.getName()).log(Level.SEVERE, null, ex);
-            isReg = -1;
-        } catch (ParseException ex) {
+        } catch (SQLException | ParseException ex) {
             Logger.getLogger(RegUser.class.getName()).log(Level.SEVERE, null, ex);
             isReg = -1;
         }
-        
         return isReg;
     }
     
     public int validacionUsuario(String usuario){
-        int existe = 0;
-        
+        int existe;
         try {
             myConn.EstablecerConn();
             myPstat = myConn.con.prepareStatement("select * from usuarioweb where username=?");
@@ -74,13 +68,11 @@ public class RegUser {
             Logger.getLogger(RegUser.class.getName()).log(Level.SEVERE, null, ex);
             existe = -1;
         }
-        
         return existe;
     }
     
     public int ingresoCuenta(int idUser, int card, int secureCod, double cantidad){
-        int isIn = 0;
-        
+        int isIn;
         try {
             myConn.EstablecerConn();
             myPstat = myConn.con.prepareStatement("INSERT INTO public.cuentacompras(idwebuser, tarjetabanco, securekey, cantidaddinero) VALUES (?, ?, ?, ?)");
@@ -94,12 +86,10 @@ public class RegUser {
             Logger.getLogger(RegUser.class.getName()).log(Level.SEVERE, null, ex);
             isIn = -1;
         }
-        
         return isIn;
     }
     
     private String formatoFecha(String anyo, String mes, String dia) {
-
         switch (mes) {
             case "Enero":
                 mes = "01";
@@ -138,7 +128,6 @@ public class RegUser {
                 mes = "12";
                 break;
         }
-
         return anyo + "-" + mes + "-" + dia;
     }
     
