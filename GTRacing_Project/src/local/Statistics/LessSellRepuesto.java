@@ -24,7 +24,7 @@ public class LessSellRepuesto {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void repuestosMenosVendidos() {
         Graficas_DAO gr = new Graficas_DAO();
         //obtencion de datos
         ResultSet rs = gr.getgraficarepuestomen();

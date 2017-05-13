@@ -23,7 +23,7 @@ public class LessSellCars {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void carrosMenosVendidos() {
         Graficas_DAO gr = new Graficas_DAO();
         ResultSet rs = gr.getgraficaautomas();
         try {

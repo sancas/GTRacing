@@ -29,6 +29,10 @@ import local.Inventario.Proveedores;
 import local.Inventario.Repuesto_Add;
 import local.Inventario.Repuesto_Existencia;
 import local.Pool_Variable.Variables;
+import local.Statistics.LessSellCars;
+import local.Statistics.LessSellRepuesto;
+import local.Statistics.MostSellCars;
+import local.Statistics.MostSellRepuesto;
 import local.Usuarios.Roles;
 import local.Usuarios.Usuarios;
 import local.Ventas.Ventas;
@@ -185,6 +189,12 @@ public class Principal_Frame extends javax.swing.JFrame {
         jmnVetas = new javax.swing.JMenu();
         jmiVentas = new javax.swing.JMenuItem();
         jmnEstatictis = new javax.swing.JMenu();
+        jMenuEstadisticasAutos = new javax.swing.JMenu();
+        jMenuItemMostSellCars = new javax.swing.JMenuItem();
+        jMenuItemLessSellCars = new javax.swing.JMenuItem();
+        jMenuEstadisticasRepuestos = new javax.swing.JMenu();
+        jMenuItemMostSellRepuestos = new javax.swing.JMenuItem();
+        jMenuItemLessSellRepuestos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -367,6 +377,47 @@ public class Principal_Frame extends javax.swing.JFrame {
         MenuBar.add(jmnVetas);
 
         jmnEstatictis.setText("Estadisticas");
+
+        jMenuEstadisticasAutos.setText("Autos");
+
+        jMenuItemMostSellCars.setText("Mas vendidos");
+        jMenuItemMostSellCars.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMostSellCarsActionPerformed(evt);
+            }
+        });
+        jMenuEstadisticasAutos.add(jMenuItemMostSellCars);
+
+        jMenuItemLessSellCars.setText("Menos vendidos");
+        jMenuItemLessSellCars.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemLessSellCarsActionPerformed(evt);
+            }
+        });
+        jMenuEstadisticasAutos.add(jMenuItemLessSellCars);
+
+        jmnEstatictis.add(jMenuEstadisticasAutos);
+
+        jMenuEstadisticasRepuestos.setText("Repuestos");
+
+        jMenuItemMostSellRepuestos.setText("Mas Vendidos");
+        jMenuItemMostSellRepuestos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMostSellRepuestosActionPerformed(evt);
+            }
+        });
+        jMenuEstadisticasRepuestos.add(jMenuItemMostSellRepuestos);
+
+        jMenuItemLessSellRepuestos.setText("Menos Vendidos");
+        jMenuItemLessSellRepuestos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemLessSellRepuestosActionPerformed(evt);
+            }
+        });
+        jMenuEstadisticasRepuestos.add(jMenuItemLessSellRepuestos);
+
+        jmnEstatictis.add(jMenuEstadisticasRepuestos);
+
         MenuBar.add(jmnEstatictis);
 
         setJMenuBar(MenuBar);
@@ -456,6 +507,26 @@ public class Principal_Frame extends javax.swing.JFrame {
         jdpContenedor.moveToFront(ve);
     }//GEN-LAST:event_jmiVentasActionPerformed
 
+    private void jMenuItemMostSellRepuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMostSellRepuestosActionPerformed
+        // TODO add your handling code here:
+        MostSellRepuesto.repuestosMasVendidos();
+    }//GEN-LAST:event_jMenuItemMostSellRepuestosActionPerformed
+
+    private void jMenuItemLessSellCarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLessSellCarsActionPerformed
+        // TODO add your handling code here:
+        LessSellCars.carrosMenosVendidos();
+    }//GEN-LAST:event_jMenuItemLessSellCarsActionPerformed
+
+    private void jMenuItemMostSellCarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMostSellCarsActionPerformed
+        // TODO add your handling code here:
+        MostSellCars.carrosMasVendidos();
+    }//GEN-LAST:event_jMenuItemMostSellCarsActionPerformed
+
+    private void jMenuItemLessSellRepuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLessSellRepuestosActionPerformed
+        // TODO add your handling code here:
+        LessSellRepuesto.repuestosMenosVendidos();
+    }//GEN-LAST:event_jMenuItemLessSellRepuestosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -491,6 +562,12 @@ public class Principal_Frame extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenuEstadisticasAutos;
+    private javax.swing.JMenu jMenuEstadisticasRepuestos;
+    private javax.swing.JMenuItem jMenuItemLessSellCars;
+    private javax.swing.JMenuItem jMenuItemLessSellRepuestos;
+    private javax.swing.JMenuItem jMenuItemMostSellCars;
+    private javax.swing.JMenuItem jMenuItemMostSellRepuestos;
     public static javax.swing.JDesktopPane jdpContenedor;
     private javax.swing.JLabel jlblDate;
     private javax.swing.JLabel jlblEmployName;
