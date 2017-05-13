@@ -181,8 +181,8 @@ create table usuarioweb(
 create table cuentaCompras(
     idCuenta serial not null,
     idWebUser int not null,
-    tarjetaBanco int not null,
-    secureKey int not null,
+    tarjetaBanco varchar(250) not null,
+    secureKey varchar(250) not null,
     cantidadDinero decimal(15, 2) not null,
     constraint pk_cuenta_compras primary key(idCuenta),
     constraint fk_web_user foreign key(idWebUser) references usuarioweb(idWebUser)
