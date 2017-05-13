@@ -22,7 +22,6 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         
         <!-- Codigo CSS -->
-        <style></
     </head>
     <body>
         <%
