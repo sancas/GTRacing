@@ -25,7 +25,7 @@ public class Repuestos {
     public ResultSet getRepuestosIndex(){
         try {
             myConn.EstablecerConn();
-            myPstat = myConn.con.prepareStatement("select * from repuestos WHERE respuestoisactive = 1");
+            myPstat = myConn.con.prepareStatement("SELECT repuestos.idrepuesto, repuestos.namerepuesto, repuestos.descripcion, existenciarepuestos.precioventa FROM repuestos INNER JOIN existenciarepuestos ON existenciarepuestos.idrepuesto = repuestos.idrepuesto WHERE repuestos.respuestoisactive = 1");
             myRs = myPstat.executeQuery();
             return myRs;
         } catch (SQLException ex) {

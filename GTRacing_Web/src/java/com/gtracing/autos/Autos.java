@@ -25,10 +25,8 @@ public class Autos {
     public ResultSet getAutosIndex(){
         try {
             myConn.EstablecerConn();
-            myPstat = myConn.con.prepareStatement("select * from autos");
+            myPstat = myConn.con.prepareStatement("SELECT autos.idauto, marcas.namemarca, autos.modeloauto, autos.anyoauto, existenciaautos.precioventa FROM autos INNER JOIN existenciaautos ON existenciaautos.idautos = autos.idauto INNER JOIN marcas ON autos.idmarca = marcas.idmarca");
             myRs = myPstat.executeQuery();
-            
-            
             return myRs;
         } catch (SQLException ex) {
             Logger.getLogger(Autos.class.getName()).log(Level.SEVERE, null, ex);
