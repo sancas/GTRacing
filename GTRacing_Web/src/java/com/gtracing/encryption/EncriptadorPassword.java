@@ -8,7 +8,6 @@ package com.gtracing.encryption;
 // CIPHER / GENERATORS
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
-import javax.crypto.KeyGenerator;
  
 // KEY SPECIFICATIONS
 import java.security.spec.KeySpec;
@@ -27,6 +26,8 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import java.io.UnsupportedEncodingException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author El APRENDIZ www.elaprendiz.net63.net
@@ -41,12 +42,8 @@ public class EncriptadorPassword {
             dcipher = Cipher.getInstance(algorithm);
             ecipher.init(Cipher.ENCRYPT_MODE, key);
             dcipher.init(Cipher.DECRYPT_MODE, key);
-        } catch (NoSuchPaddingException e) {
-            System.out.println("EXCEPTION: NoSuchPaddingException");
-        } catch (NoSuchAlgorithmException e) {
-            System.out.println("EXCEPTION: NoSuchAlgorithmException");
-        } catch (InvalidKeyException e) {
-            System.out.println("EXCEPTION: InvalidKeyException");
+        } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException e) {
+            Logger.getLogger(EncriptadorPassword.class.getName()).log(Level.SEVERE, null, e);
         }
     }
     
@@ -82,16 +79,8 @@ public class EncriptadorPassword {
             ecipher.init(Cipher.ENCRYPT_MODE, key, paramSpec);
             dcipher.init(Cipher.DECRYPT_MODE, key, paramSpec);
 
-        } catch (InvalidAlgorithmParameterException e) {
-            System.out.println("EXCEPTION: InvalidAlgorithmParameterException");
-        } catch (InvalidKeySpecException e) {
-            System.out.println("EXCEPTION: InvalidKeySpecException");
-        } catch (NoSuchPaddingException e) {
-            System.out.println("EXCEPTION: NoSuchPaddingException");
-        } catch (NoSuchAlgorithmException e) {
-            System.out.println("EXCEPTION: NoSuchAlgorithmException");
-        } catch (InvalidKeyException e) {
-            System.out.println("EXCEPTION: InvalidKeyException");
+        } catch (InvalidAlgorithmParameterException | InvalidKeySpecException | NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException e) {
+            Logger.getLogger(EncriptadorPassword.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -113,6 +102,7 @@ public class EncriptadorPassword {
             return new sun.misc.BASE64Encoder().encode(enc);
 
         } catch (BadPaddingException | IllegalBlockSizeException | UnsupportedEncodingException e) {
+            Logger.getLogger(EncriptadorPassword.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
     }
@@ -137,6 +127,7 @@ public class EncriptadorPassword {
             return new String(utf8, "UTF8");
 
         } catch (BadPaddingException | IllegalBlockSizeException | IOException e) {
+            Logger.getLogger(EncriptadorPassword.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
     }

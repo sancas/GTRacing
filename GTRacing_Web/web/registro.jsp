@@ -89,7 +89,7 @@
                         <input type="text" name="username" class="form-control" id="Usuario" placeholder="juan97">
                     </div>
                     <div class="form-group">
-                        <label for="Passwprd1">Contrase&ntilde;a</label>
+                        <label for="Password1">Contrase&ntilde;a</label>
                         <input type="password" name="passwd" class="form-control" id="Password1" placeholder="Password">
                     </div>
                     <div class="form-inline">
@@ -142,7 +142,7 @@
                                 <option>Noviembre</option>
                                 <option>Diciembre</option>
                             </select>
-                            <input type="text" name="anyo" class="form-control" id="Password1" placeholder="A&ntilde;o" required>
+                            <input type="text" name="anyo" class="form-control" id="anyo" placeholder="A&ntilde;o" required>
                         </div>
                     </div>
                     <button type="submit" name="btnSig" class="btn btn-success">Siguiente</button>

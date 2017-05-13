@@ -5,16 +5,10 @@
  */
 
 package com.gtracing.conexion;
-import com.google.gson.Gson;
-import java.io.*;
+
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 
 /**
  * La clase sirve para establecer las conexiones a la Base de Datos Postgre SQL
@@ -27,14 +21,12 @@ public class Conexion {
     public void EstablecerConn(){
         String url = "jdbc:postgresql://localhost:5432/GTRacing";
         String user="postgres";
-        String passwd="j@vA4dv@nC3d#";
+        String passwd="";
         
         try {
             Class.forName("org.postgresql.Driver");
             this.con = DriverManager.getConnection(url,user,passwd);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -73,7 +73,7 @@
                 <form>
                     <div class="form-group">
                         <label for="CreditCard">Numero de Tarjeta</label>
-                        <input type="text" name="cardNum" class="form-control" id="CreditCard" placeholder="0000 00000 0000 0000 0000" minlength="12" maxlength="12" required>
+                        <input type="text" name="cardNum" class="form-control" id="CreditCard" placeholder="0000 0000 0000 0000" minlength="16" maxlength="16" required>
                     </div>
                     <div class="form-group">
                         <label for="SecureCode">Codigo de Seguridad</label>
