@@ -21,7 +21,7 @@ public class Conexion {
     public void EstablecerConn(){
         String url = "jdbc:postgresql://localhost:5432/GTRacing";
         String user="postgres";
-        String passwd="";
+        String passwd="fairytail";
         
         try {
             Class.forName("org.postgresql.Driver");
