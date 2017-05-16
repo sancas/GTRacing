@@ -56,6 +56,8 @@ public class Empleados_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Empleados_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
+        } finally {
+            this.close();
         }
     }
     
@@ -87,6 +89,8 @@ public class Empleados_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Empleados_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
+        } finally {
+            this.close();
         }
     }
     
@@ -117,6 +121,8 @@ public class Empleados_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Empleados_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
+        } finally {
+            this.close();
         }
     }
     
@@ -131,6 +137,8 @@ public class Empleados_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Empleados_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
+        } finally {
+            this.close();
         }
     }
     
@@ -144,6 +152,8 @@ public class Empleados_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Empleados_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        } finally {
+            this.close();
         }
     }
 
@@ -160,6 +170,8 @@ public class Empleados_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Empleados_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        } finally {
+            this.close();
         }
     }
     
@@ -177,6 +189,8 @@ public class Empleados_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Empleados_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        } finally {
+            this.close();
         }
     }
     
@@ -195,11 +209,13 @@ public class Empleados_DAO {
         }
         catch(SQLException ex){
             Logger.getLogger(Empleados_DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.close();
         }
     }
 
     //Cerrando la conexion
-    public void closeEmpleados() {
+    public void close() {
         myConn.CerrarConn();
     }
 }

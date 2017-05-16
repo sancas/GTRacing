@@ -20,8 +20,8 @@ public class Conexion {
     
     public void EstablecerConn(){
         String url = "jdbc:postgresql://localhost:5432/GTRacing";
-        String user="postgres";
-        String passwd="fairytail";
+        String user="";
+        String passwd="";
         
         try {
             Class.forName("org.postgresql.Driver");

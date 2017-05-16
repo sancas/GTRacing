@@ -62,7 +62,6 @@ public class Conexion {
     public void CerrarConn() {
         try {
             con.close();
-            //rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }

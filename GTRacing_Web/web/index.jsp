@@ -88,9 +88,12 @@
                 font-size:13px;
                 font-weight:600;
             }
+            span[ng-click] {
+                cursor: pointer;
+            }
         </style>
     </head>
-    <body>
+    <body ng-app="myApp">
         <!-- Menu de navegacion -->
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -108,24 +111,20 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Nosotros<span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Ubicacion</a></li>
+                        <li><a href="#">Home</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Automoviles</a></li>
+                                <li><a href="autos.jsp">Automoviles</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Repuestos</a></li>
+                                <li><a href="repuestos.jsp">Repuestos</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <form class="navbar-form navbar-left">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="cart.jsp"><ngcart-summary></ngcart-summary></a>
+                        </li>
                         <%
                             HttpSession mySession = request.getSession();
                             if (mySession.getAttribute("currentUser") != null) {
@@ -135,8 +134,6 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi Cuenta <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="cuentas.jsp">Mi Usuario</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="compras.jsp">Mis Compras</a></li>
                             </ul>
                         </li>
                         <%
@@ -152,7 +149,7 @@
             </div><!-- /.container-fluid -->
         </nav>
         <!-- Fin del menu -->
-        
+
         <div id="output"></div>
         <!-- Contenido de la pagina -->
         <div class="container">
@@ -164,7 +161,7 @@
                     ResultSet rs = myRep.getRepuestosIndex();
                     String nombreProducto = "", Descripcion = "";
                     double Precio;
-                    int id = 0;
+                    int id = 0, Cantidad;
 
                     while (rs.next()) {
                         id = rs.getInt(1);
@@ -174,6 +171,7 @@
                             Descripcion = Descripcion.substring(0, 25) + "...";
                         }
                         Precio = rs.getDouble(4);
+                        Cantidad = rs.getInt(5);
                 %>
                 <div class="col-md-3 col-sm-6">
                     <span class="thumbnail">
@@ -189,13 +187,12 @@
                         <p><%=Descripcion%>.</p>
                         <hr class="line">
                         <div class="row">
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-md-12 col-sm-12">
                                 <p class="price">$<%=Precio%></p>
                             </div>
-                            <div class="col-md-6 col-sm-6">
-                                <a href="#" onclick="repuestos(<%=id%>,<%=Precio%>);"><button class="btn btn-info right">RESERVAR</button></a>
+                            <div class="col-md-12 col-sm-12">
+                                <ngcart-addtocart id="<%=id%>" name="<%=nombreProducto%>" price="<%=Precio%>" quantity="1" quantity-max="<%=Cantidad%>">Agregar al carrito</ngcart-addtocart>
                             </div>
-
                         </div>
                     </span>
                 </div>
@@ -224,12 +221,12 @@
                         <p><%=Descripcion%>.</p>
                         <hr class="line">
                         <div class="row">
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-md-12 col-sm-12">
                                 <p class="price">$<%=Precio%></p>
                             </div>
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-md-12 col-sm-12">
                                 <input type="hidden" name="idreserva" value="<%=id%>" />
-                                <a href="#" onclick="autos(<%=id%>,<%=Precio%>);"><button class="btn btn-info right" >RESERVAR</button></a>
+                                <ngcart-addtocart id="<%=id%>" name="<%=nombreProducto%>" price="<%=Precio%>" quantity="1" quantity-max="1">Agregar al carrito</ngcart-addtocart>
                             </div>
 
                         </div>
@@ -244,53 +241,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-            function repuestos($idrepuesto, $precio)
-            {
-                if (confirm("Esta seguro que desea continuar?"))
-                {
-                    $.ajax({
-                        type: "POST",
-                        url: "reservar.jsp",
-                        data: { "idrepuesto" : $idrepuesto,
-                                "precio" : $precio
-                            },
-                        success: function (msg) {
-                            $('<div id="output"></div>').replaceAll('#output');
-                            $('#output').append(msg);
-                            $('div.alert').hide();
-                            $('div.alert').alert();
-                            $('div.alert').fadeTo(5000, 500);
-                        },
-                        error: function(XMLHttpRequest, textStatus, errorThrown) {
-                            alert("Surgio un error inesperado");
-                        }
-                    });
-                }
-            }
-            function autos($idauto, $precio)
-            {
-                if (confirm("Esta seguro que desea continuar?"))
-                {
-                    $.ajax({
-                        type: "POST",
-                        url: "reservar.jsp",
-                        data: { "idauto" : $idauto,
-                                "precio" : $precio
-                            },
-                        success: function (msg) {
-                            $('<div id="output"></div>').replaceAll('#output');
-                            $('#output').append(msg);
-                            $('div.alert').hide();
-                            $('div.alert').alert();
-                            $('div.alert').fadeTo(5000, 500);
-                        },
-                        error: function(XMLHttpRequest, textStatus, errorThrown) {
-                            alert("Surgio un error inesperado.");
-                        }
-                    });
-                }
-            }
-        </script>
+        <script src="js/angular.js"></script>
+        <script src="js/ngCart.js"></script>
+        <%@include file="templates.html" %>
     </body>
 </html>

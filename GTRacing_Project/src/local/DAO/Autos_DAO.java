@@ -42,6 +42,8 @@ public class Autos_DAO {
         catch(SQLException ex){
             Logger.getLogger(Autos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        } finally {
+            this.close();
         }
     }
     
@@ -55,6 +57,8 @@ public class Autos_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Autos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        } finally {
+            this.close();
         }
     }
     
@@ -78,6 +82,8 @@ public class Autos_DAO {
             JOptionPane.showMessageDialog(null, "Error al ingresar datos de repuestos");
             Logger.getLogger(Autos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
+        } finally {
+            this.close();
         }
     }
     
@@ -101,6 +107,8 @@ public class Autos_DAO {
             JOptionPane.showMessageDialog(null, "Error al actualizar de repuesto datos");
             Logger.getLogger(Autos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
+        } finally {
+            this.close();
         }
     }
     
@@ -125,6 +133,8 @@ public class Autos_DAO {
             JOptionPane.showMessageDialog(null, "Error al actualizar de repuesto datos.");
             Logger.getLogger(Autos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
+        } finally {
+            this.close();
         }
     }
     
@@ -140,6 +150,8 @@ public class Autos_DAO {
             JOptionPane.showMessageDialog(null, "Error al obtener nombre de repuesto para tabla autos.");
             Logger.getLogger(Autos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        } finally {
+            this.close();
         }
     }
     
@@ -156,6 +168,8 @@ public class Autos_DAO {
             JOptionPane.showMessageDialog(null, "Error al elminar datos para tabla autos.");
             Logger.getLogger(Autos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return isdeleted;
+        } finally {
+            this.close();
         }
     }
     
@@ -174,6 +188,8 @@ public class Autos_DAO {
         catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al obtener la lista de autos.");
             Logger.getLogger(Autos_DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.close();
         }
     }
     

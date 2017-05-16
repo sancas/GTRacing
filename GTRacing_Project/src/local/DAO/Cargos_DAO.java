@@ -35,6 +35,8 @@ public class Cargos_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Cargos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        } finally {
+            this.close();
         }
     }
     
@@ -48,6 +50,8 @@ public class Cargos_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Cargos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        } finally {
+            this.close();
         }
     }
     
@@ -64,6 +68,8 @@ public class Cargos_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Cargos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
+        } finally {
+            this.close();
         }
     }
     
@@ -81,6 +87,8 @@ public class Cargos_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Cargos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
+        } finally {
+            this.close();
         }
     }
     
@@ -97,6 +105,8 @@ public class Cargos_DAO {
         } catch (SQLException ex) {
             Logger.getLogger(Cargos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
+        } finally {
+            this.close();
         }
     }
     
@@ -114,6 +124,8 @@ public class Cargos_DAO {
         }
         catch(SQLException ex){
             Logger.getLogger(Cargos_DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.close();
         }
     }
     

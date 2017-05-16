@@ -41,6 +41,8 @@ public class ExistenciaAutos_DAO {
             JOptionPane.showMessageDialog(null, "Error al obtener datos de autos.");
             Logger.getLogger(ExistenciaAutos_DAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        } finally {
+            this.close();
         }
     }
     

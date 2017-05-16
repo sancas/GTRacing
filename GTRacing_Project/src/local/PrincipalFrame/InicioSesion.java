@@ -59,7 +59,6 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel3.setText("Contraseña");
 
         jtfUserName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jtfUserName.setText("leon04");
 
         jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jButton1.setText("Ingresar");
@@ -70,7 +69,6 @@ public class InicioSesion extends javax.swing.JFrame {
         });
 
         jpfPassword.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jpfPassword.setText("D@nB@$c04");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,7 +167,6 @@ public class InicioSesion extends javax.swing.JFrame {
             } finally{
                 logDao.closeLogin();
             }
-
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

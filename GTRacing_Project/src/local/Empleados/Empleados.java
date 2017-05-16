@@ -93,7 +93,7 @@ public class Empleados extends javax.swing.JInternalFrame {
             }
 
             rs.close();
-            empDao.closeEmpleados();
+            empDao.close();
         } catch (SQLException ex) {
             Logger.getLogger(Cargos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -667,7 +667,7 @@ public class Empleados extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "No puedes dejar campos vacios");
         }
 
-        empDao.closeEmpleados();
+        empDao.close();
     }//GEN-LAST:event_jbtnAceptarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
