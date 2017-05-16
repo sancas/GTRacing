@@ -96,31 +96,22 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Nosotros</a></li>
-                        <li><a href="#">Ubicacion</a></li>
+                        <li><a href="index.jsp">Home</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Automoviles</a></li>
+                                <li><a href="autos.jsp">Automoviles</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Repuestos</a></li>
+                                <li><a href="repuestos.jsp">Repuestos</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <form class="navbar-form navbar-left">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="logout.jsp">Logout</a></li>
                         <li class="dropdown active">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi Cuenta <span class="caret"></span></a><span class="sr-only">(current)</span>
                             <ul class="dropdown-menu">
                                 <li class="active"><a href="cuentas.jsp">Mi Usuario</a><span class="sr-only">(current)</span></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="compras.jsp">Mis Compras</a></li>
                             </ul>
                         </li>
                     </ul>

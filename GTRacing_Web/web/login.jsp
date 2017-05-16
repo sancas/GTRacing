@@ -58,23 +58,16 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Nosotros</a></li>
-                        <li><a href="#">Ubicacion</a></li>
+                        <li><a href="index.jsp">Home</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Automoviles</a></li>
+                                <li><a href="autos.jsp">Automoviles</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Repuestos</a></li>
+                                <li><a href="repuestos.jsp">Repuestos</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <form class="navbar-form navbar-left">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Buscar</button>
-                    </form>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="#">Login</a><span class="sr-only">(current)</span></li>
                         <li><a href="registro.jsp">Registrate</a></li>
@@ -84,6 +77,13 @@
         </nav>
 
         <div class="container">
+
+            <% if (request.getParameter("error") != null) {%>
+            <div class="alert alert-danger alert-dismissable fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Error!</strong> <%=request.getParameter("error")%>
+            </div>
+            <% } %>
             <div class="row" style="margin-top:20px">
                 <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                     <form name="ingreso" action="login.jsp" method="post">
@@ -134,7 +134,7 @@
                 }
                 response.sendRedirect("index.jsp");
             } else {
-                response.sendRedirect("login_error.jsp");
+                response.sendRedirect("login.jsp?error=No se pudo logear");
             }
         }
     %>
@@ -202,5 +202,8 @@
             });
         });
     </script>
+    <script src="js/angular.js"></script>
+    <script src="js/ngCart.js"></script>
+    <%@include file="templates.html" %>
 </body>
 </html>

@@ -178,16 +178,6 @@ create table usuarioweb(
     constraint pk_userweb primary key(idWebUser)
 );
 
-create table cuentaCompras(
-    idCuenta serial not null,
-    idWebUser int not null,
-    tarjetaBanco varchar(250) not null,
-    secureKey varchar(250) not null,
-    cantidadDinero decimal(15, 2) not null,
-    constraint pk_cuenta_compras primary key(idCuenta),
-    constraint fk_web_user foreign key(idWebUser) references usuarioweb(idWebUser)
-);
-
 create table reservaProducto(
     idReserva varchar(15) not null,
     totalReserva decimal(15, 2) not null,
